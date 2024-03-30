@@ -1,43 +1,43 @@
 const paths = require('./paths')
 const webpack = require('webpack')
-const {merge} = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
   /**
    * Mode
    *
-   * Set the mode to development or production.
+   * Définit le mode sur développement ou production.
    */
   mode: 'development',
 
   /**
    * Devtool
    *
-   * Control how source maps are generated.
+   * Contrôle la génération des source maps.
    */
   devtool: 'inline-source-map',
 
   /**
    * DevServer
    *
-   * Spin up a server for quick development.
+   * Lance un serveur pour un développement rapide.
    */
   devServer: {
-    historyApiFallback: true,
-    contentBase: paths.build,
-    open: true,
-    compress: true,
-    hot: true,
-    https: true,
-    port: 8443,
+    historyApiFallback: true, // Permet la gestion de la navigation avec le mode de navigation HTML5
+    contentBase: paths.build, // Spécifie le répertoire à servir
+    open: true, // Ouvre automatiquement le navigateur une fois le serveur démarré
+    compress: true, // Active la compression gzip pour tous les fichiers servis
+    hot: true, // Active le remplacement à chaud (Hot Module Replacement)
+    https: true, // Active le serveur en mode HTTPS
+    port: 8443, // Port sur lequel le serveur écoute
   },
 
   plugins: [
     /**
      * HotModuleReplacementPlugin
      *
-     * Only update what has changed.
+     * Met à jour uniquement ce qui a changé.
      */
     new webpack.HotModuleReplacementPlugin(),
   ],

@@ -1,4 +1,4 @@
-# ARGenius react integration demo
+# Jeeliz VTO widget react integration demo
 
 
 ## Presentation
@@ -16,7 +16,7 @@ It has been tested with NodeJS v12. To set the right NVM version please run:
 nvm use 12
 ```
 
-ARGenius is used through the [NPM ARGenius package](https://www.npmjs.com/package/ARGenius).
+Jeeliz VTO widget is used through the [NPM ARGenius package](https://www.npmjs.com/package/ARGenius).
 
 
 ## Webpack boilerplate original doc
