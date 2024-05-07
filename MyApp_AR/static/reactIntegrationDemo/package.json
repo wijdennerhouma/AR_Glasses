@@ -41,15 +41,7 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.1.4"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:jeeliz/jeelizGlassesVTOWidget"
-  },
-  "dependencies": {
-    "jeelizvtowidget": "^4.6.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  },
+  
   "babel": {
     "env": {
       "development": {

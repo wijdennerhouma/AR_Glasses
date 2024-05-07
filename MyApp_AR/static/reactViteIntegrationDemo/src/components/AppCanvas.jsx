@@ -6,7 +6,7 @@ import { ARLook , ARLookWIDGET } from 'jeelizvtowidget'
 
 
 function init_VTOWidget(placeHolder, canvas, toggle_loading){
-  JEELIZVTOWIDGET.start({
+  ARLookWidget.start({
     placeHolder,
     canvas,
     callbacks: {
@@ -63,21 +63,21 @@ function AppCanvas(props){
   }
 
   const enter_adjustMode = () => {
-    JEELIZVTOWIDGET.enter_adjustMode()
+    ARLookWidget.enter_adjustMode()
     refAdjustEnter.current.style.display = 'none'
     refAdjust.current.style.display = 'block'
     refChangeModel.current.style.display = 'none'
   }
 
   const exit_adjustMode = () => {
-    JEELIZVTOWIDGET.exit_adjustMode()
+    ARLookWidget.exit_adjustMode()
     refAdjustEnter.current.style.display = 'block'
     refAdjust.current.style.display = 'none'
     refChangeModel.current.style.display = 'block'
   }
 
   const set_glassesModel = (sku) => {
-    JEELIZVTOWIDGET.load(sku)
+    ARLookWidget.load(sku)
   }
 
   useEffect(() => {

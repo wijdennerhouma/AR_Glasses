@@ -48,7 +48,7 @@ function init_VTOWidget(placeHolder, canvas, toggle_loading){
           break;
       } // end switch
     } // end onError()
-  }) // end JEELIZVTOWIDGET.start call
+  }) 
 }
 
 
