@@ -3,118 +3,97 @@
   src: url(../fonts/Roboto-Regular.ttf)
 }
 
-@import 'variables'; /* Importation des variables pour la configuration des styles */
+@import 'variables';
 
-/* Styles généraux pour la page HTML */
 html {
-  font-size: $root-font-size; /* Taille de la police racine définie par la variable */
-  font-family: $font-family; /* Famille de police définie par la variable */
-  max-width: $page-width; /* Largeur maximale de la page définie par la variable */
-  margin: 0; /* Suppression des marges */
-  text-align: center; /* Centrage du texte */
-  overflow: hidden; /* Masquage du débordement pour éviter le défilement */
-  background-color: white; /* Couleur de fond blanche */
+  font-size: $root-font-size;
+  font-family: $font-family;
+  max-width: $page-width;
+  margin: 0;
+  text-align: center;
+  overflow: hidden;
+  background-color: white;
 }
 
-/* Styles généraux pour le corps de la page */
 body {
-  margin: 0; /* Suppression des marges */
-  width: 100vw; /* Largeur du corps de la page à 100% de la largeur de la fenêtre */
+  margin: 0;
+  width: 100vw;
 }
 
-/* Styles pour les paragraphes */
 p {
-  font-size: $paragraph-font-size; /* Taille de police pour les paragraphes définie par la variable */
+  font-size: $paragraph-font-size;
 }
 
-/* Styles pour le conteneur principal de l'application ARGenius */
-.ARGenius {
-  width: 100vw; /* Largeur à 100% de la largeur de la fenêtre */
-  height: 100vh; /* Hauteur à 100% de la hauteur de la fenêtre */
-  max-width: 100vh; /* Largeur maximale à 100% de la hauteur de la fenêtre */
-  max-height: 100vw; /* Hauteur maximale à 100% de la largeur de la fenêtre */
-  margin-left: auto; /* Mise en page automatique à gauche */
-  margin-right: auto; /* Mise en page automatique à droite */
-  position: relative; /* Position relative */
-}
 
-/* Styles pour le canevas ARGenius */
-.ARGeniusCanvas {
-  position: absolute; /* Position absolue */
-  z-index: 1; /* Ordre d'empilement en avant */
-  left: 0; /* Positionnement à gauche */
-  right: 0; /* Positionnement à droite */
-  margin: 0 auto; /* Centrage horizontal */
+.JARLookWidget {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vh;
+  max-height: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
-
-/* Styles pour les contrôles ARGenius */
-.ARGeniusControls {
-  position: absolute; /* Position absolue */
-  z-index: 2; /* Ordre d'empilement au-dessus du canevas */
-  width: 100%; /* Largeur à 100% */
+.ARLookWidgetCanvas {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
-
-/* Styles pour les boutons ARGenius */
-.ARGeniusButton {
-  cursor: pointer; /* Curseur pointeur */
-  background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent noir */
-  color: #ddd; /* Couleur du texte blanc */
-  font-weight: bold; /* Gras */
-  font-variant: small-caps; /* Petites capitales */
-  font-size: 16px; /* Taille de police */
-  padding: 8px; /* Rembourrage */
-  min-width: 120px; /* Largeur minimale */
-  border: none; /* Pas de bordure */
-  margin: 8px; /* Marge */
+.ARLookWidgetControls {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
 }
-
-/* Styles pour le bouton d'entrée dans le mode d'ajustement ARGenius */
-.ARGeniusAdjustEnterButton {
-  /* Ajouter des styles si nécessaire */
+.ARLookWidgetButton {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ddd;
+  font-weight: bold;
+  font-variant: small-caps;  
+  font-size: 16px;
+  padding: 8px;
+  min-width: 120px;
+  border: none;
+  margin: 8px;
 }
-
-/* Styles pour l'avis d'ajustement ARGenius */
-.ARGeniusAdjustNotice {
-  width: 100%; /* Largeur à 100% */
-  position: absolute; /* Position absolue */
-  background-color: rgba(0,0,0,0.5); /* Fond semi-transparent noir */
-  color: white; /* Couleur du texte blanc */
-  z-index: 3; /* Ordre d'empilement au-dessus des contrôles */
-  font-size: 16px; /* Taille de police */
-  bottom: 0; /* Alignement en bas */
-  justify-content: center; /* Centrage horizontal */
-  padding-top: 2em; /* Rembourrage haut */
-  padding-bottom: 2em; /* Rembourrage bas */
-  display: none; /* Masquage par défaut */
+.ARLookWidgetAdjustEnterButton {
+  
 }
-
-/* Styles pour le bouton de sortie du mode d'ajustement ARGenius */
-.ARGeniusAdjustExitButton {
-  position: absolute; /* Position absolue */
-  right: 8px; /* Alignement à droite */
-  bottom: 8px; /* Alignement en bas */
+.ARLookWidgetAdjustNotice {
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0,0,0,0.5);
+  color: rgb(255, 0, 204);
+  z-index: 3;
+  font-size: 16px;
+  bottom: 0;  
+  justify-content: center;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  display: none;
 }
-
-/* Styles pour l'indicateur de chargement ARGenius */
-.ARGeniusLoading {
-  position: fixed; /* Position fixe */
-  z-index: 4; /* Ordre d'empilement au-dessus de tout */
-  cursor: wait; /* Curseur en attente */
-  top: 0; /* Alignement en haut */
-  left: 0; /* Alignement à gauche */
-  width: 100vw; /* Largeur à 100% de la fenêtre */
-  height: 100vh; /* Hauteur à 100% de la fenêtre */
-  background-color: rgba(0,0,0,0.5); /* Fond semi-transparent noir */
+.ARLookWidgetAdjustExitButton {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
 }
-
-/* Styles pour le texte de chargement ARGenius */
-.ARGeniusLoadingText {
-  color: white; /* Couleur du texte blanc */
-  font-size: 32pt; /* Taille de police */
-  margin-top: 40vh; /* Marge supérieure */
+.ARLookWidgetLoading {
+  position: fixed;
+  z-index: 4;
+  cursor: wait;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
 }
-
-/* Styles pour le conteneur de changement de modèle ARGenius */
-.ARGeniusChangeModelContainer {
-  bottom: 0; /* Alignement en bas */
+.ARLookWidgetLoadingText {
+  color: white;
+  font-size: 32pt;
+  margin-top: 40vh;
+}
+.ARLookWidgetChangeModelContainer {
+  bottom: 0;
 }

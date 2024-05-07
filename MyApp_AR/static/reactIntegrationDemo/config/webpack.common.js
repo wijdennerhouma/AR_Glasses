@@ -7,14 +7,14 @@ module.exports = {
   /**
    * Entry
    *
-   * Le point d'entrée où Webpack commence à construire le bundle.
+   * The first place Webpack looks to start building the bundle.
    */
   entry: [paths.src + '/index.js'],
 
   /**
    * Output
    *
-   * Où Webpack sort les assets et les bundles.
+   * Where Webpack outputs the assets and bundles.
    */
   output: {
     path: paths.build,
@@ -25,20 +25,20 @@ module.exports = {
   /**
    * Plugins
    *
-   * Personnalise le processus de construction de Webpack.
+   * Customize the Webpack build process.
    */
   plugins: [
     /**
      * CleanWebpackPlugin
      *
-     * Supprime/nettoie les dossiers de construction et les assets inutilisés lors de la reconstruction.
+     * Removes/cleans build folders and unused assets when rebuilding.
      */
     new CleanWebpackPlugin(),
 
     /**
      * CopyWebpackPlugin
      *
-     * Copie les fichiers de la source vers le dossier de destination.
+     * Copies files from target to destination folder.
      */
     new CopyWebpackPlugin({
       patterns: [
@@ -55,27 +55,27 @@ module.exports = {
     /**
      * HtmlWebpackPlugin
      *
-     * Génère un fichier HTML à partir d'un modèle.
+     * Generates an HTML file from a template.
      */
     new HtmlWebpackPlugin({
       title: 'React-fiber integration demo',
       favicon: paths.static + '/favicon.png',
-      template: paths.src + '/template.html', // fichier de template
-      filename: 'index.html', // fichier de sortie
+      template: paths.src + '/template.html', // template file
+      filename: 'index.html', // output file
     }),
   ],
 
   /**
    * Module
    *
-   * Détermine comment les modules du projet sont traités.
+   * Determine how modules within the project are treated.
    */
   module: {
     rules: [
       /**
        * JavaScript
        *
-       * Utilise Babel pour transpiler les fichiers JavaScript.
+       * Use Babel to transpile JavaScript files.
        */
       {
         test: /\.js$/,
@@ -86,7 +86,7 @@ module.exports = {
       /**
        * Styles
        *
-       * Injecte les CSS dans l'en-tête avec des source maps.
+       * Inject CSS into the head with source maps.
        */
       {
         test: /\.(scss|css)$/,
@@ -101,21 +101,21 @@ module.exports = {
       /**
        * Images
        *
-       * Copie les fichiers d'image vers le dossier de construction.
+       * Copy image files to build folder.
        */
       {
         test: /\.(?:ico|gif|png|jpg|jpeg|webp|svg)$/i,
         loader: 'file-loader',
         options: {
           name: '[path][name].[ext]',
-          context: 'src', // empêche l'affichage de src/ dans le nom de fichier
+          context: 'src', // prevent display of src/ in filename
         },
       },
 
       /**
        * Fonts
        *
-       * Inline les fichiers de police.
+       * Inline font files.
        */
       {
         test: /\.(woff(2)?|eot|ttf|otf|)$/,
@@ -123,7 +123,7 @@ module.exports = {
         options: {
           limit: 8192,
           name: '[path][name].[ext]',
-          context: 'src', // empêche l'affichage de src/ dans le nom de fichier
+          context: 'src', // prevent display of src/ in filename
         },
       },
 

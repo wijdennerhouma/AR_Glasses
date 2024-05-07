@@ -10,8 +10,7 @@ body {
   width: 100vw;
 }
 
-/* Style pour le conteneur ARGenius */
-.ARGenius{
+.ARLookWidget {
   width: 100vw;
   height: 100vh;
   max-width: 100vh;
@@ -20,25 +19,19 @@ body {
   margin-right: auto;
   position: relative;
 }
-
-/* Style pour le canevas ARGenius */
-.ARGeniusCanvas {
+.ARLookWidgetCanvas {
   position: absolute;
   z-index: 1;
   left: 0;
   right: 0;
   margin: 0 auto;
 }
-
-/* Style pour les contrôles ARGenius */
-.ARGeniusControls {
+.ARLookWidgetControls {
   position: absolute;
   z-index: 2;
   width: 100%;
 }
-
-/* Style pour les boutons ARGenius */
-.ARGeniusButton {
+.ARLookWidgetButton {
   cursor: pointer;
   background: rgba(0, 0, 0, 0.5);
   color: #ddd;
@@ -50,14 +43,10 @@ body {
   border: none;
   margin: 8px;
 }
-
-/* Style spécifique pour le bouton d'entrée dans le mode d'ajustement ARGenius */
-.ARGeniusAdjustEnterButton {
-  /* Aucun style spécifique défini */
+.ARLookWidgetAdjustEnterButton {
+  
 }
-
-/* Style pour l'affichage des instructions d'ajustement ARGenius */
-.ARGeniusAdjustNotice {
+.ARLookWidgetAdjustNotice {
   width: 100%;
   position: absolute;
   background-color: rgba(0,0,0,0.5);
@@ -68,18 +57,14 @@ body {
   justify-content: center;
   padding-top: 2em;
   padding-bottom: 2em;
-  display: none; /* Initialement caché */
+  display: none;
 }
-
-/* Style pour le bouton de sortie du mode d'ajustement ARGenius */
-.ARGeniusAdjustExitButton {
+.ARLookWidgetAdjustExitButton {
   position: absolute;
   right: 8px;
   bottom: 8px;
 }
-
-/* Style pour l'affichage de chargement ARGenius */
-.ARGeniusLoading {
+.ARLookWidgetLoading {
   position: fixed;
   z-index: 4;
   cursor: wait;
@@ -89,15 +74,11 @@ body {
   height: 100vh;
   background-color: rgba(0,0,0,0.5);
 }
-
-/* Style pour le texte de chargement ARGenius */
-.ARGeniusLoadingText {
+.ARLookWidgetLoadingText {
   color: white;
   font-size: 32pt;
   margin-top: 40vh;
 }
-
-/* Style pour le conteneur des boutons de changement de modèle ARGenius */
-.ARGeniusChangeModelContainer {
+.ARLookWidgetChangeModelContainer {
   bottom: 0;
 }

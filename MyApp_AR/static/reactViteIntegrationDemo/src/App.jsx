@@ -4,7 +4,6 @@ function App() {
   
   return (
     <>
-      {/* Composant principal de l'application, qui contient le canevas ARGenius */}
       <AppCanvas />
     </>
   )

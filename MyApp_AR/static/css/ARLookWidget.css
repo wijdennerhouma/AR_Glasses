@@ -13,7 +13,7 @@ body {
   font-family: Helvetica Neu, Arial, sans-serif;
   margin: 0;
   padding: 0;
-  color: #444;
+  color: #9c51ca;
   box-sizing: border-box;
 }
 
@@ -32,7 +32,7 @@ button, select {
 }
 
 button:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(247, 110, 231, 0.8);
   color: white;
 }
 
@@ -48,7 +48,7 @@ button:hover {
   width: 100%;
   height: 70px;
   box-shadow: 0 0 3px black;
-  background-color: rgb(12, 127, 194);
+  background-color: rgb(194, 12, 103);
   color: white;
 }
 .headerTitle {
@@ -59,7 +59,7 @@ button:hover {
 }
 
 
-#ARGenius {
+#ARLookWidget {
   flex-grow: 1;
   width: 100%;
   max-width: calc(100vh - 70px);
@@ -68,7 +68,7 @@ button:hover {
   position: relative;
 }
 
-#ARGeniusCanvas {
+#ARLookWidgetCanvas {
   position: absolute;
   z-index: 1;
   left: 0;
@@ -76,7 +76,7 @@ button:hover {
   margin: 0 auto;
 }
 
-.ARGeniusControls {
+.ARLookWidgetControls {
   position: absolute;
   z-index: 2;
   width: 100%;
@@ -86,25 +86,25 @@ button:hover {
   margin-right: 8px;
 }
 
-.ARGeniusControlsTop {
+.ARLookWidgetControlsTop {
   top: 16px;
   height: 40px;
 }
-.ARGeniusControlsTop > button {
+.ARLookWidgetControlsTop > button {
    width: 45%;
    min-width: auto;
 }
 
-#ARGeniusChangeModelContainer {
+#ARLookWidgetChangeModelContainer {
   bottom: 16px;
   height: 40px;  
 }
-#ARGeniusChangeModelContainer > button {
+#ARLookWidgetChangeModelContainer > button {
   width: 20%;
   min-width: auto;
 }
 
-#ARGeniusLoading {
+#ARLookWidgetLoading {
   position: fixed;
   z-index: 4;
   cursor: wait;
@@ -114,13 +114,13 @@ button:hover {
   height: 100vh;
   background-color: rgba(0,0,0,0.5);
 }
-.ARGeniusLoadingText {
+.ARLookWidgetLoadingText {
   color: white;
   font-size: 32pt;
   margin-top: 40vh;
 }
 
-#ARGeniusAdjustNotice {
+#ARLookWidgetAdjustNotice {
   width: 100%;
   position: absolute;
   background-color: rgba(0,0,0,0.5);
@@ -134,7 +134,7 @@ button:hover {
   display: none;
 }
 
-#ARGeniusAdjustExit {
+#ARLookWidgetAdjustExit {
   border: 1px solid white;
   background: transparent;
   position: absolute;
@@ -142,11 +142,11 @@ button:hover {
   bottom: 8px;
 }
 
-/* Hide everything, stuffs will be displayed by ARGenius: */
-#ARGeniusAdjust {
+/* Hide everything, stuffs will be displayed by ARLookWidget: */
+#ARLookWidgetAdjust {
   display: none;
 }
-#ARGeniusChangeModelContainer {
+#ARLookWidgetChangeModelContainer {
   display: none;
 }
 #buttonResizeCanvas {

@@ -1,7 +1,7 @@
 {
-  "name": "jeeliz_vto_widget_integration_demo",
+  "name": "widget_integration_demo",
   "version": "1.0.0",
-  "description": "Webpack 4 boilerplate using Babel and PostCSS with HMR development server and optimized production build for Jeeliz VTO widget.",
+  "description": "Webpack 4 boilerplate using Babel and PostCSS with HMR development server and optimized production build .",
   "main": "index.js",
   "author": "Xavier Bourry",
   "license": "APACHE2",
@@ -46,7 +46,7 @@
     "url": "git@github.com:jeeliz/jeelizGlassesVTOWidget"
   },
   "dependencies": {
-    "ARGenius": "^4.6.4",
+    "jeelizvtowidget": "^4.6.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
