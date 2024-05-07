@@ -8,9 +8,7 @@ var ARLookWidget = (function () {
     Sa.isRT = !0;
     Ca.adjust = document.getElementById("ARLookWidgetAdjust");
     if (Ca.adjust) {
-      console.log(
-        "Élément d'ajustement trouvé. Initialisation des écouteurs d'événements et des éléments d'interface utilisateur."
-      );
+      console.log("Élément d'ajustement trouvé. Initialisation des écouteurs d'événements et des éléments d'interface utilisateur." );
       Ca.adjustNotice = document.getElementById("ARLookWidgetAdjustNotice");
       Ca.adjustExit = document.getElementById("ARLookWidgetAdjustExit");
       Ca.changeModelContainer = document.getElementById(
@@ -76,11 +74,10 @@ var ARLookWidget = (function () {
   function wa(S, V) {
     if (S) {
       console.log(
-        "La fonction wa() a été appelée. Modification des styles de l'élément :",
-        S
+        "La fonction wa() a été appelée. Modification des styles de l'élément S :",
       );
       for (var ua in V) {
-        console.log("Modification du style", ua, "avec la valeur", V[ua]);
+        console.log("  wa : Modification du style", ua, "avec la valeur", V[ua]);
         S.style[ua] = V[ua];
       }
     }
@@ -89,17 +86,17 @@ var ARLookWidget = (function () {
   //dimensionsElement
   function qb(S) {
     if (!S) {
-      console.log("Aucun élément spécifié. Largeur et hauteur renvoyées à 0.");
+      console.log("qb: Aucun élément spécifié. Largeur et hauteur renvoyées à 0.");
       return { width: 0, height: 0 };
     }
     S = S.getBoundingClientRect();
-    console.log("Obtention des dimensions de l'élément :", S);
+    console.log("qb: Obtention des dimensions de l'élément : S");
     return { width: S.width, height: S.height };
   }
 
   //chargerFichierJSON
   function va(S) {
-    console.log("Fonction va : Début de la requête GET vers", S);
+    console.log("Fonction va : Début de la requête GET vers S");
     return new Promise(function (V, ua) {
       var Ga = new XMLHttpRequest();
       Ga.open("GET", S, !0);
@@ -108,14 +105,14 @@ var ARLookWidget = (function () {
           if (200 === Ga.status || 0 === Ga.status)
             try {
               var Ka = JSON.parse(Ga.responseText);
-              console.log("Fonction va : Réponse reçue :", Ka);
+              console.log("Fonction va : Réponse reçue :");
               V(Ka);
             } catch (vb) {
-              console.error("Fonction va : Erreur lors du parsing JSON :", vb);
+              console.error("Fonction va : Erreur lors du parsing JSON :");
               ua("INVALID JSON");
             }
           else {
-            console.error("Fonction va : Erreur HTTP " + Ga.status);
+            console.error("Fonction va : Erreur HTTP " );
             ua("HTTP ERROR " + Ga.status);
           }
       };
@@ -150,7 +147,7 @@ var ARLookWidget = (function () {
           Xc(V, Ka, ua);
         })
         .catch(function (error) {
-          console.error("Fonction Ua: Erreur lors de la promesse:", error);
+          console.error("Fonction Ua: Erreur lors de la promesse");
           Ga(error);
         });
     });
@@ -299,7 +296,7 @@ var ARLookWidget = (function () {
     return S.isStandalone
       ? (console.log("INFO : Utilisation du modèle en mode autonome."),
         kc + "models3DStandalone/" + V)
-      : (console.log("INFO : Utilisation du modèle en mode non autonome."), V);
+      : (console.log("INFO : Utilisation du modèle en mode non autonome."));
   }
 
   function $c(S, V, ua, Ga) {
@@ -371,7 +368,7 @@ var ARLookWidget = (function () {
   }
 
   function vc(S) {
-    console.log("INFO : Appel de la fonction vc avec l'argument :", S);
+    console.log("INFO : Appel de la fonction vc avec l'argument : S");
     (S = ad[S]) && S();
   }
 
@@ -437,7 +434,7 @@ var ARLookWidget = (function () {
 
   //mettre à jour les propriétés des matériaux d'un modèle en fonction des paramètres spécifiés dans l'objet S
   function xd(S) {
-    console.log("INFO: La fonction xd a été appelée avec l'argument S =", S);
+    console.log("INFO: La fonction xd a été appelée avec l'argument S ");
     if (S && S.materials && S.materials.length !== 0) {
       console.log(
         "INFO: Il y a des matériaux définis dans S, traitement en cours..."
@@ -445,9 +442,9 @@ var ARLookWidget = (function () {
       S.materials.forEach(function (V) {
         console.log("INFO: Traitement du matériau", V);
         var ua = zd(S, V);
-        console.log("INFO: Résultat de la fonction zd pour ce matériau :", ua);
+        console.log("INFO: Résultat de la fonction zd pour ce matériau :");
         V.matInds.forEach(function (Ga) {
-          console.log("INFO: Mise à jour du matériau avec l'indice", Ga);
+          console.log("INFO: Mise à jour du matériau avec l'indice");
           Lb.update_material(
             Ga,
             {
@@ -473,7 +470,7 @@ var ARLookWidget = (function () {
   }
 
   function Ad(S) {
-    console.log("INFO: La fonction Ad a été appelée avec l'argument S =", S);
+    console.log("INFO: La fonction Ad a été appelée avec l'argument S =");
     var matInds = [];
     var templesMaterial = S.find(function (V) {
       return "temples" === V.id;
@@ -500,7 +497,7 @@ var ARLookWidget = (function () {
     if (V) {
       console.log("INFO: V est évalué à true.");
       var ua = Ad(S);
-      console.log("INFO: Indices des matériaux des temples :", ua);
+      console.log("INFO: Indices des matériaux des temples :");
       if (2 === ua.length) {
         console.log(
           "INFO: Longueur des indices des matériaux des temples est égale à 2."
@@ -511,13 +508,13 @@ var ARLookWidget = (function () {
           console.log("INFO: Indices inversés :", ua);
         }
         Lb.get_materialsSpec().then(function (Ga) {
-          console.log("INFO: Spécifications des matériaux récupérées :", Ga);
+          console.log("INFO: Spécifications des matériaux récupérées :");
           Lb.update_material(
             ua[0],
             { diffuseTexture: Ga[ua[1]].diffuseTexture },
             !0
           );
-          console.log("INFO: Matériau mis à jour :", ua[0]);
+          console.log("INFO: Matériau mis à jour :");
         });
       } else {
         console.log(
@@ -534,7 +531,7 @@ var ARLookWidget = (function () {
   function bd() {
     console.log("INFO: La fonction bd a été appelée.");
     Lb.get_materialsSpec().then(function (S) {
-      console.log("INFO: Spécifications des matériaux récupérées :", S);
+      console.log("INFO: Spécifications des matériaux récupérées :");
       var V = S.length;
       console.log("INFO: Nombre total de matériaux :", V);
       for (var i = 0; i < V; ++i) {
@@ -548,7 +545,7 @@ var ARLookWidget = (function () {
   }
 
   function Bd(S) {
-    console.log("INFO: La fonction Bd a été appelée avec le paramètre :", S);
+    console.log("INFO: La fonction Bd a été appelée avec le paramètre :");
     return S
       ? "json" === S.split(".").pop().toLowerCase()
         ? (console.log("INFO: L'extension du fichier est JSON."),
@@ -974,278 +971,377 @@ var ARLookWidget = (function () {
 
       function zc(a) {
         console.log("INFO: Appel de la fonction zc avec l'argument:", a);
-    
-        function b(u) {
-            console.log("INFO: Appel de la fonction b avec l'argument:", u);
-            return [
-                480, 576, 640, 648, 720, 768, 800, 960, 1080, 1152, 1280, 1366, 1920,
-            ].sort(function(y, A) {
-                return Math.abs(y - u) - Math.abs(A - u);
-            });
-        }
-    
-        function d(u) {
-            console.log("INFO: Appel de la fonction d avec l'argument:", u);
-            var y = yc(a);
-            u = u(y);
-            l.push(u);
-            f(u);
-        }
-    
-        function f(u) {
-            console.log("INFO: Appel de la fonction f avec l'argument:", u);
-            if (u.video && u.video.facingMode && u.video.facingMode.exact) {
-                var y = u.video.facingMode.exact;
-                u = yc(u);
-                delete u.video.facingMode.exact;
-                u.video.facingMode.ideal = y;
-                l.push(u);
-            }
-        }
-    
-        var l = [];
-    
-        if (!a || !a.video) return l;
-    
-        f(a);
-    
-        if (a.video.width && a.video.height) {
-            if (a.video.width.ideal && a.video.height.ideal) {
-                var p = b(a.video.width.ideal).slice(0, 3),
-                    w = b(a.video.height.ideal).slice(0, 3),
-                    h = {},
-                    m = 0;
-    
-                for (h.Ib = void 0; m < p.length; h = { Ib: h.Ib }, ++m) {
-                    h.Ib = p[m];
-                    var q = {},
-                        x = 0;
-    
-                    for (q.xb = void 0; x < w.length; q = { xb: q.xb }, ++x) {
-                        if (
-                            ((q.xb = w[x]),
-                            h.Ib !== a.video.width.ideal || q.xb !== a.video.height.ideal)
-                        ) {
-                            var I = Math.max(h.Ib, q.xb) / Math.min(h.Ib, q.xb);
-                            I < 4 / 3 - 0.1 || I > 16 / 9 + 0.1 || d(function(u, y) {
-                                return function(A) {
-                                    A.video.width.ideal = u.Ib;
-                                    A.video.height.ideal = y.xb;
-                                    return A;
-                                };
-                            }(h, q));
-                        }
-                    }
-                }
-            }
-            d(function(u) {
-                return bc(u);
-            });
-        }
-    
-        a.video.width &&
-            a.video.height &&
-            (a.video.width.ideal &&
-                a.video.height.ideal &&
-                d(function(u) {
-                    delete u.video.width.ideal;
-                    delete u.video.height.ideal;
-                    return u;
-                }),
-                d(function(u) {
-                    delete u.video.width;
-                    delete u.video.height;
-                    return u;
-                }));
-    
-        a.video.facingMode &&
-            (d(function(u) {
-                    delete u.video.facingMode;
-                    return u;
-                }),
-                a.video.width &&
-                a.video.height &&
-                d(function(u) {
-                    bc(u);
-                    delete u.video.facingMode;
-                    return u;
-                }));
-    
-        l.push({ audio: a.audio, video: !0 });
-    
-        return l;
-    }
-    
-    function oc(a) {
-      console.log("INFO: Appel de la fonction oc avec l'argument:", a);
-      a.volume = 0;
-      console.log("INFO: Volume réglé sur 0");
-  
-      Nb(a, "muted");
-      console.log("INFO: Élément audio muté");
-  
-      if (xc()) {
-          console.log("INFO: Safari détecté");
-  
-          if (1 === a.volume) {
-              console.log("INFO: Volume initial détecté à 1");
-              var b = function() {
-                  a.volume = 0;
-                  console.log("INFO: Volume réglé sur 0 après détection de la souris ou du toucher");
-                  window.removeEventListener("mousemove", b, !1);
-                  window.removeEventListener("touchstart", b, !1);
-                  console.log("INFO: Événements de la souris et du toucher retirés");
-              };
-              window.addEventListener("mousemove", b, !1);
-              window.addEventListener("touchstart", b, !1);
-              console.log("INFO: Événements de la souris et du toucher ajoutés pour régler le volume à 0");
-          }
-          setTimeout(function() {
-              a.volume = 0;
-              console.log("INFO: Volume réglé sur 0 après délai de 5 millisecondes");
-              Nb(a, "muted");
-              console.log("INFO: Élément audio muté après délai de 5 millisecondes");
-          }, 5);
-      }
-  }
-  
-  function Ed(a) {
-    console.log("INFO: Appel de la fonction Ed avec l'argument:", a);
-    var b = Fa.element,
-        d = Fa.wh;
-    if (null === b) {
-        console.log("INFO: Aucun élément vidéo trouvé, résolution immédiate de la promesse.");
-        return Promise.resolve();
-    } else {
-        console.log("INFO: Élément vidéo trouvé.");
-        return new Promise(function(f, l) {
-            if (b.srcObject && b.srcObject.getVideoTracks) {
-                console.log("INFO: Objet source vidéo et méthode getVideoTracks disponibles.");
-                var p = b.srcObject.getVideoTracks();
-                if (p.length !== 1) {
-                    console.log("ERROR: Nombre de pistes vidéo invalide:", p.length);
-                    l("INVALID_TRACKNUMBER");
-                } else {
-                    console.log("INFO: Une seule piste vidéo trouvée.");
-                    p = p[0];
-                    if (a) {
-                        console.log("INFO: Arrêt de la piste vidéo.");
-                        cd(b, f, l, d);
-                    } else {
-                        console.log("INFO: Arrêt de la piste vidéo sans arrêt de la lecture.");
-                        p.stop();
-                        f();
-                    }
-                }
-            } else {
-                console.log("ERROR: Implémentation de l'objet source vidéo ou de la méthode getVideoTracks non valide.");
-                l("BAD_IMPLEMENTATION");
-            }
-        });
-    }
-}
 
-function dd(a, b, d, f) {
-  console.log("INFO: Appel de la fonction dd avec les arguments:", a, b, d, f);
-  function l(w) {
-      p || ((p = !0), d(w));
-  }
-  var p = !1;
-  console.log("INFO: Demande d'autorisation pour accéder à la caméra et au microphone.");
-  navigator.mediaDevices.getUserMedia(f).then(function(w) {
-      console.log("INFO: Autorisation accordée.");
-      function h() {
-          setTimeout(function() {
-              if (a.currentTime) {
+        function b(u) {
+          console.log("INFO: Appel de la fonction b avec l'argument:", u);
+          return [
+            480, 576, 640, 648, 720, 768, 800, 960, 1080, 1152, 1280, 1366,
+            1920,
+          ].sort(function (y, A) {
+            return Math.abs(y - u) - Math.abs(A - u);
+          });
+        }
+
+        function d(u) {
+          console.log("INFO: Appel de la fonction d avec l'argument:", u);
+          var y = yc(a);
+          u = u(y);
+          l.push(u);
+          f(u);
+        }
+
+        function f(u) {
+          console.log("INFO: Appel de la fonction f avec l'argument:", u);
+          if (u.video && u.video.facingMode && u.video.facingMode.exact) {
+            var y = u.video.facingMode.exact;
+            u = yc(u);
+            delete u.video.facingMode.exact;
+            u.video.facingMode.ideal = y;
+            l.push(u);
+          }
+        }
+
+        var l = [];
+
+        if (!a || !a.video) return l;
+
+        f(a);
+
+        if (a.video.width && a.video.height) {
+          if (a.video.width.ideal && a.video.height.ideal) {
+            var p = b(a.video.width.ideal).slice(0, 3),
+              w = b(a.video.height.ideal).slice(0, 3),
+              h = {},
+              m = 0;
+
+            for (h.Ib = void 0; m < p.length; h = { Ib: h.Ib }, ++m) {
+              h.Ib = p[m];
+              var q = {},
+                x = 0;
+
+              for (q.xb = void 0; x < w.length; q = { xb: q.xb }, ++x) {
+                if (
+                  ((q.xb = w[x]),
+                  h.Ib !== a.video.width.ideal || q.xb !== a.video.height.ideal)
+                ) {
+                  var I = Math.max(h.Ib, q.xb) / Math.min(h.Ib, q.xb);
+                  I < 4 / 3 - 0.1 ||
+                    I > 16 / 9 + 0.1 ||
+                    d(
+                      (function (u, y) {
+                        return function (A) {
+                          A.video.width.ideal = u.Ib;
+                          A.video.height.ideal = y.xb;
+                          return A;
+                        };
+                      })(h, q)
+                    );
+                }
+              }
+            }
+          }
+          d(function (u) {
+            return bc(u);
+          });
+        }
+
+        a.video.width &&
+          a.video.height &&
+          (a.video.width.ideal &&
+            a.video.height.ideal &&
+            d(function (u) {
+              delete u.video.width.ideal;
+              delete u.video.height.ideal;
+              return u;
+            }),
+          d(function (u) {
+            delete u.video.width;
+            delete u.video.height;
+            return u;
+          }));
+
+        a.video.facingMode &&
+          (d(function (u) {
+            delete u.video.facingMode;
+            return u;
+          }),
+          a.video.width &&
+            a.video.height &&
+            d(function (u) {
+              bc(u);
+              delete u.video.facingMode;
+              return u;
+            }));
+
+        l.push({ audio: a.audio, video: !0 });
+
+        return l;
+      }
+
+      function oc(a) {
+        console.log("INFO: Appel de la fonction oc avec l'argument:", a);
+        a.volume = 0;
+        console.log("INFO: Volume réglé sur 0");
+
+        Nb(a, "muted");
+        console.log("INFO: Élément audio muté");
+
+        if (xc()) {
+          console.log("INFO: Safari détecté");
+
+          if (1 === a.volume) {
+            console.log("INFO: Volume initial détecté à 1");
+            var b = function () {
+              a.volume = 0;
+              console.log(
+                "INFO: Volume réglé sur 0 après détection de la souris ou du toucher"
+              );
+              window.removeEventListener("mousemove", b, !1);
+              window.removeEventListener("touchstart", b, !1);
+              console.log(
+                "INFO: Événements de la souris et du toucher retirés"
+              );
+            };
+            window.addEventListener("mousemove", b, !1);
+            window.addEventListener("touchstart", b, !1);
+            console.log(
+              "INFO: Événements de la souris et du toucher ajoutés pour régler le volume à 0"
+            );
+          }
+          setTimeout(function () {
+            a.volume = 0;
+            console.log(
+              "INFO: Volume réglé sur 0 après délai de 5 millisecondes"
+            );
+            Nb(a, "muted");
+            console.log(
+              "INFO: Élément audio muté après délai de 5 millisecondes"
+            );
+          }, 5);
+        }
+      }
+
+      function Ed(a) {
+        console.log("INFO: Appel de la fonction Ed avec l'argument:", a);
+        var b = Fa.element,
+          d = Fa.wh;
+        if (null === b) {
+          console.log(
+            "INFO: Aucun élément vidéo trouvé, résolution immédiate de la promesse."
+          );
+          return Promise.resolve();
+        } else {
+          console.log("INFO: Élément vidéo trouvé.");
+          return new Promise(function (f, l) {
+            if (b.srcObject && b.srcObject.getVideoTracks) {
+              console.log(
+                "INFO: Objet source vidéo et méthode getVideoTracks disponibles."
+              );
+              var p = b.srcObject.getVideoTracks();
+              if (p.length !== 1) {
+                console.log(
+                  "ERROR: Nombre de pistes vidéo invalide:",
+                  p.length
+                );
+                l("INVALID_TRACKNUMBER");
+              } else {
+                console.log("INFO: Une seule piste vidéo trouvée.");
+                p = p[0];
+                if (a) {
+                  console.log("INFO: Arrêt de la piste vidéo.");
+                  cd(b, f, l, d);
+                } else {
+                  console.log(
+                    "INFO: Arrêt de la piste vidéo sans arrêt de la lecture."
+                  );
+                  p.stop();
+                  f();
+                }
+              }
+            } else {
+              console.log(
+                "ERROR: Implémentation de l'objet source vidéo ou de la méthode getVideoTracks non valide."
+              );
+              l("BAD_IMPLEMENTATION");
+            }
+          });
+        }
+      }
+
+      function dd(a, b, d, f) {
+        console.log(
+          "INFO: Appel de la fonction dd avec les arguments:",
+          a,
+          b,
+          d,
+          f
+        );
+        function l(w) {
+          p || ((p = !0), d(w));
+        }
+        var p = !1;
+        console.log(
+          "INFO: Demande d'autorisation pour accéder à la caméra et au microphone."
+        );
+        navigator.mediaDevices
+          .getUserMedia(f)
+          .then(function (w) {
+            console.log("INFO: Autorisation accordée.");
+            function h() {
+              setTimeout(function () {
+                if (a.currentTime) {
                   var q = a.videoHeight;
                   if (0 === a.videoWidth || 0 === q) l("VIDEO_NULLSIZE");
                   else {
-                      q = {
-                          dl: null,
-                          Fg: null,
-                          jn: null
-                      };
-                      try {
-                          var x = w.getVideoTracks()[0];
-                          x && ((q.jn = x), (q.dl = x.getCapabilities()), (q.Fg = x.getSettings()));
-                      } catch (I) {}
-                      p || (wc(a, w), b(a, w, q));
+                    q = {
+                      dl: null,
+                      Fg: null,
+                      jn: null,
+                    };
+                    try {
+                      var x = w.getVideoTracks()[0];
+                      x &&
+                        ((q.jn = x),
+                        (q.dl = x.getCapabilities()),
+                        (q.Fg = x.getSettings()));
+                    } catch (I) {}
+                    p || (wc(a, w), b(a, w, q));
                   }
-              } else l("VIDEO_NOTSTARTED");
-          }, 700);
-      }
+                } else l("VIDEO_NOTSTARTED");
+              }, 700);
+            }
 
-      function m() {
-          a.removeEventListener("loadeddata", m, !1);
-          var q = a.play();
-          oc(a);
-          "undefined" === typeof q ? h() : q.then(function() {
-              h();
-          }).catch(function() {
-              l("VIDEO_PLAYPROMISEREJECTED");
+            function m() {
+              a.removeEventListener("loadeddata", m, !1);
+              var q = a.play();
+              oc(a);
+              "undefined" === typeof q
+                ? h()
+                : q
+                    .then(function () {
+                      h();
+                    })
+                    .catch(function () {
+                      l("VIDEO_PLAYPROMISEREJECTED");
+                    });
+            }
+            "undefined" !== typeof a.srcObject
+              ? (a.srcObject = w)
+              : ((a.src = window.URL.createObjectURL(w)), (a.videoStream = w));
+            oc(a);
+            a.addEventListener("loadeddata", m, !1);
+          })
+          .catch(function (w) {
+            console.log("ERROR: Échec de l'autorisation:", w);
+            l(w);
           });
       }
-      "undefined" !== typeof a.srcObject ? (a.srcObject = w) : ((a.src = window.URL.createObjectURL(w)), (a.videoStream = w));
-      oc(a);
-      a.addEventListener("loadeddata", m, !1);
-  }).catch(function(w) {
-      console.log("ERROR: Échec de l'autorisation:", w);
-      l(w);
-  });
-}
 
-function cd(a, b, d, f) {
-  console.log("INFO: Appel de la fonction cd avec les arguments:", a, b, d, f);
-  a ? navigator.mediaDevices && navigator.mediaDevices.getUserMedia ? (Nb(a, "autoplay"), Nb(a, "playsinline"), f && f.audio ? (a.volume = 0) : Nb(a, "muted"), Fd(f).then(function() {
-      dd(a, b, function() {
-          function l(w) {
-              if (0 === w.length) d("NO_VALID_MEDIASTREAM_FALLBACK_CONSTRAINTS");
-              else {
-                  var h = w.shift();
-                  console.log("INFO: Tentative de création d'un flux média avec les contraintes:", h);
-                  dd(a, b, function() {
-                      l(w);
-                  }, h);
-              }
-          }
-          var p = zc(f);
-          console.log("INFO: Tentative de création d'un flux média avec les contraintes:", p);
-          l(p);
-      }, f);
-  })) : d && d("MEDIASTREAMAPI_NOT_FOUND") : d && d("VIDEO_NOT_PROVIDED");
-}
+      function cd(a, b, d, f) {
+        console.log(
+          "INFO: Appel de la fonction cd avec les arguments:",
+          a,
+          b,
+          d,
+          f
+        );
+        a
+          ? navigator.mediaDevices && navigator.mediaDevices.getUserMedia
+            ? (Nb(a, "autoplay"),
+              Nb(a, "playsinline"),
+              f && f.audio ? (a.volume = 0) : Nb(a, "muted"),
+              Fd(f).then(function () {
+                dd(
+                  a,
+                  b,
+                  function () {
+                    function l(w) {
+                      if (0 === w.length)
+                        d("NO_VALID_MEDIASTREAM_FALLBACK_CONSTRAINTS");
+                      else {
+                        var h = w.shift();
+                        console.log(
+                          "INFO: Tentative de création d'un flux média avec les contraintes:",
+                          h
+                        );
+                        dd(
+                          a,
+                          b,
+                          function () {
+                            l(w);
+                          },
+                          h
+                        );
+                      }
+                    }
+                    var p = zc(f);
+                    console.log(
+                      "INFO: Tentative de création d'un flux média avec les contraintes:",
+                      p
+                    );
+                    l(p);
+                  },
+                  f
+                );
+              }))
+            : d && d("MEDIASTREAMAPI_NOT_FOUND")
+          : d && d("VIDEO_NOT_PROVIDED");
+      }
 
-function Fd(a) {
-  console.log("INFO: Appel de la fonction Fd avec l'argument:", a);
-  if (!a || !a.video || !a.video.facingMode) return Promise.resolve("NO_VIDEO_CONSTRAINTS");
-  if (a.video.deviceId) return Promise.resolve("DEVICEID_ALREADY_SET");
-  var b = a.video.facingMode;
-  b = b.exact || b.ideal;
-  if (!b) return Promise.resolve("NO_FACINGMODE");
-  var d = { user: [], environment: ["camera2 0"] }[b];
-  return d && 0 !== d.length ? new Promise(function(f) {
-      ed(function(l) {
-          l ? (l = l.find(function(p) {
-              var w = p.label;
-              return w ? d.some(function(h) {
-                  return w.includes(h);
-              }) : !1;
-          }), l ? (a.video.deviceId = { exact: l.deviceId }, f("SUCCESS")) : f("NO_PREFERRED_DEVICE_FOUND")) : f("NO_DEVICES_FOUND");
-      });
-  }) : Promise.resolve("NO_PREFERRED_CAMERAS");
-}
+      function Fd(a) {
+        console.log("INFO: Appel de la fonction Fd avec l'argument:", a);
+        if (!a || !a.video || !a.video.facingMode)
+          return Promise.resolve("NO_VIDEO_CONSTRAINTS");
+        if (a.video.deviceId) return Promise.resolve("DEVICEID_ALREADY_SET");
+        var b = a.video.facingMode;
+        b = b.exact || b.ideal;
+        if (!b) return Promise.resolve("NO_FACINGMODE");
+        var d = { user: [], environment: ["camera2 0"] }[b];
+        return d && 0 !== d.length
+          ? new Promise(function (f) {
+              ed(function (l) {
+                l
+                  ? ((l = l.find(function (p) {
+                      var w = p.label;
+                      return w
+                        ? d.some(function (h) {
+                            return w.includes(h);
+                          })
+                        : !1;
+                    })),
+                    l
+                      ? ((a.video.deviceId = { exact: l.deviceId }),
+                        f("SUCCESS"))
+                      : f("NO_PREFERRED_DEVICE_FOUND"))
+                  : f("NO_DEVICES_FOUND");
+              });
+            })
+          : Promise.resolve("NO_PREFERRED_CAMERAS");
+      }
 
-function ed(a) {
-  console.log("INFO: Appel de la fonction ed");
-  navigator.mediaDevices && navigator.mediaDevices.enumerateDevices ? navigator.mediaDevices.enumerateDevices().then(function(b) {
-      b = b.filter(function(d) {
-          return d.kind && -1 !== d.kind.toLowerCase().indexOf("video") && d.label && d.deviceId;
-      });
-      b && b.length && 0 < b.length ? a(b, !1) : a(!1, "NODEVICESFOUND");
-  }).catch(function() {
-      a(!1, "PROMISEREJECTED");
-  }) : a(!1, "NOTSUPPORTED");
-}
+      function ed(a) {
+        console.log("INFO: Appel de la fonction ed");
+        navigator.mediaDevices && navigator.mediaDevices.enumerateDevices
+          ? navigator.mediaDevices
+              .enumerateDevices()
+              .then(function (b) {
+                b = b.filter(function (d) {
+                  return (
+                    d.kind &&
+                    -1 !== d.kind.toLowerCase().indexOf("video") &&
+                    d.label &&
+                    d.deviceId
+                  );
+                });
+                b && b.length && 0 < b.length
+                  ? a(b, !1)
+                  : a(!1, "NODEVICESFOUND");
+              })
+              .catch(function () {
+                a(!1, "PROMISEREJECTED");
+              })
+          : a(!1, "NOTSUPPORTED");
+      }
 
       function Gd() {
         function a(K) {
@@ -1254,142 +1350,142 @@ function ed(a) {
           ia.width = K * J.width;
           ia.height = K * J.height;
           return ia;
-      }
-      
-      function b(K) {
-        console.log("INFO: Appel de la fonction b");
-        var R = K.length - 1,
+        }
+
+        function b(K) {
+          console.log("INFO: Appel de la fonction b");
+          var R = K.length - 1,
             Z = K[R];
-        if ("data:" === Z.substring(0, 5)) return Z;
-        for (Z = ""; 0 <= R; --R) {
+          if ("data:" === Z.substring(0, 5)) return Z;
+          for (Z = ""; 0 <= R; --R) {
             var pa = K[R],
-                Oa = "http" === pa.substring(0, 4).toLowerCase();
+              Oa = "http" === pa.substring(0, 4).toLowerCase();
             Z = pa + Z;
             if (Oa) break;
+          }
+          return Z;
         }
-        return Z;
-    }
-    function d(K, R, Z) {
-      console.log("INFO: Appel de la fonction d");
-      return new Promise(function (pa) {
-          Ba.Jj(R);
-          Ea.ba();
-          lb.isEnabled = !0;
-          Xa.isEnabled = !1;
-          lb.pa || (lb.pa = pc.instance({}));
-          K.ci() && (lb.pa.wg(K.ci()), Ba.ra(lb.pa));
-          K.set();
-          Xa.isEnabled = !1;
-          u();
-          var Oa = mb.Zh(Z);
-          setTimeout(function () {
+        function d(K, R, Z) {
+          console.log("INFO: Appel de la fonction d");
+          return new Promise(function (pa) {
+            Ba.Jj(R);
+            Ea.ba();
+            lb.isEnabled = !0;
+            Xa.isEnabled = !1;
+            lb.pa || (lb.pa = pc.instance({}));
+            K.ci() && (lb.pa.wg(K.ci()), Ba.ra(lb.pa));
+            K.set();
+            Xa.isEnabled = !1;
+            u();
+            var Oa = mb.Zh(Z);
+            setTimeout(function () {
               lb.isEnabled = !1;
               Ba.Jj(!1);
               pa(Oa);
-          }, 1);
-      });
-  }
-  
-  function f(K, R) {
-    console.log("INFO: Appel de la fonction f");
-    Da.Xc = 0.5;
-    return new Promise(function (Z) {
-        Xa.bc = K;
-        Xa.isEnabled = !0;
-        Xa.D = function () {
-            var pa = fd.instance(R());
-            Xa.D = null;
-            Z(pa);
-        };
-    });
-}
+            }, 1);
+          });
+        }
 
-function l(K, R) {
-  console.log("INFO: Appel de la fonction l");
-  return new Promise(function (Z, pa) {
-      ua(R + K, function (Oa) {
-          if (Oa.error) {
-              pa("SKU_NOT_FOUND");
-          } else {
-              Z({ kn: Oa.intrinsic.mod + ".json", hn: Oa.intrinsic.mats });
+        function f(K, R) {
+          console.log("INFO: Appel de la fonction f");
+          Da.Xc = 0.5;
+          return new Promise(function (Z) {
+            Xa.bc = K;
+            Xa.isEnabled = !0;
+            Xa.D = function () {
+              var pa = fd.instance(R());
+              Xa.D = null;
+              Z(pa);
+            };
+          });
+        }
+
+        function l(K, R) {
+          console.log("INFO: Appel de la fonction l");
+          return new Promise(function (Z, pa) {
+            ua(R + K, function (Oa) {
+              if (Oa.error) {
+                pa("SKU_NOT_FOUND");
+              } else {
+                Z({ kn: Oa.intrinsic.mod + ".json", hn: Oa.intrinsic.mats });
+              }
+            });
+          });
+        }
+
+        function p(K, R) {
+          console.log("INFO: Appel de la fonction p");
+          var Z = b([J.ea, J.wa, J.Vd + "/"]);
+          R = R.map(function (pa) {
+            return Z + pa;
+          });
+          W.model = {
+            url: b([J.ea, J.wa, J.Wd + "/" + K]),
+            ac: R,
+            jh: !1,
+            ih: !1,
+          };
+          return new Promise(function (pa) {
+            Ra.Hi(W.model, function () {
+              da.isBusy = !1;
+              pa();
+            });
+          });
+        }
+
+        function w(K, R) {
+          console.log("INFO: Appel de la fonction w");
+          if (!R) return K;
+          K = K.slice(0);
+          var Z = ab.sf().map(function (ib) {
+            return ib.toLowerCase();
+          });
+          for (var pa in R) {
+            var Oa = R[pa];
+            var pb = "number" === typeof pa ? pa : Z.indexOf(pa.toLowerCase());
+            if (-1 !== pb) {
+              K[pb] = Oa;
+            }
           }
-      });
-  });
-}
+          return K;
+        }
 
-function p(K, R) {
-  console.log("INFO: Appel de la fonction p");
-  var Z = b([J.ea, J.wa, J.Vd + "/"]);
-  R = R.map(function (pa) {
-      return Z + pa;
-  });
-  W.model = {
-      url: b([J.ea, J.wa, J.Wd + "/" + K]),
-      ac: R,
-      jh: !1,
-      ih: !1,
-  };
-  return new Promise(function (pa) {
-      Ra.Hi(W.model, function () {
-          da.isBusy = !1;
-          pa();
-      });
-  });
-}
-
-function w(K, R) {
-  console.log("INFO: Appel de la fonction w");
-  if (!R) return K;
-  K = K.slice(0);
-  var Z = ab.sf().map(function (ib) {
-      return ib.toLowerCase();
-  });
-  for (var pa in R) {
-      var Oa = R[pa];
-      var pb = "number" === typeof pa ? pa : Z.indexOf(pa.toLowerCase());
-      if (-1 !== pb) {
-          K[pb] = Oa;
-      }
-  }
-  return K;
-}
-
-function h(K, R) {
-  console.log("INFO: Appel de la fonction h");
-  return new Promise(function (Z, pa) {
-      da.set_model(
-          K,
-          function () {
-              da.set_materials(R, function () {
+        function h(K, R) {
+          console.log("INFO: Appel de la fonction h");
+          return new Promise(function (Z, pa) {
+            da.set_model(
+              K,
+              function () {
+                da.set_materials(R, function () {
                   da.isBusy = !1;
                   Z();
-              });
-          },
-          function () {
-              da.isBusy = !1;
-              pa("CANNOT_LOAD_MODEL");
-          }
-      );
-  });
-}
+                });
+              },
+              function () {
+                da.isBusy = !1;
+                pa("CANNOT_LOAD_MODEL");
+              }
+            );
+          });
+        }
 
-function m(K, R) {
-  console.log("INFO: Appel de la fonction m");
-  K &&
-      (R && A(),
-      K.preOffset && (tb = K.preOffset),
-      K.preScale && (Ub = K.preScale),
-      void 0 !== K.rx && (t = K.rx),
-      void 0 !== K.beginBendZ && (v = K.beginBendZ),
-      void 0 !== K.bendStrength && (Vb = K.bendStrength),
-      K.maskBranchStartEnd && (Wb = K.maskBranchStartEnd),
-      da.ready && Ra.we());
-}
+        function m(K, R) {
+          console.log("INFO: Appel de la fonction m");
+          K &&
+            (R && A(),
+            K.preOffset && (tb = K.preOffset),
+            K.preScale && (Ub = K.preScale),
+            void 0 !== K.rx && (t = K.rx),
+            void 0 !== K.beginBendZ && (v = K.beginBendZ),
+            void 0 !== K.bendStrength && (Vb = K.bendStrength),
+            K.maskBranchStartEnd && (Wb = K.maskBranchStartEnd),
+            da.ready && Ra.we());
+        }
 
-function q(K) {
-  console.log("INFO: Appel de la fonction q");
-  K.tweaker ? m(K.tweaker, !0) : (A(), da.ready && Ra.we());
-}
+        function q(K) {
+          console.log("INFO: Appel de la fonction q");
+          K.tweaker ? m(K.tweaker, !0) : (A(), da.ready && Ra.we());
+        }
 
         function x() {
           da.load_model = function (K, R, Z, pa, Oa, pb) {
@@ -1399,26 +1495,26 @@ function q(K) {
             R = w(R, Oa);
             (W.model ? h(K, R) : p(K, R)).then(Z).catch(pb);
             return !0;
-        };
-        
-        da.set_offset = function (K) {
-          console.log("INFO: Appel de la fonction da.set_offset");
-          ma = K;
-          Ra.ue();
-      };
-      
-      da.set_scale = function (K) {
-        console.log("INFO: Appel de la fonction da.set_scale");
-        ya = K;
-        Ra.ve();
-    };
-    
-    da.set_rx = function (K) {
-        console.log("INFO: Appel de la fonction da.set_rx");
-        qa = K;
-        Ra.Yj();
-    };
-    
+          };
+
+          da.set_offset = function (K) {
+            console.log("INFO: Appel de la fonction da.set_offset");
+            ma = K;
+            Ra.ue();
+          };
+
+          da.set_scale = function (K) {
+            console.log("INFO: Appel de la fonction da.set_scale");
+            ya = K;
+            Ra.ve();
+          };
+
+          da.set_rx = function (K) {
+            console.log("INFO: Appel de la fonction da.set_rx");
+            qa = K;
+            Ra.Yj();
+          };
+
           da.switch_shadow = Ba.Kg;
           da.switch_bgBlur = Ba.Jg;
           da.set_zoom = Ba.vg;
@@ -1426,296 +1522,328 @@ function q(K) {
             var is3D = xa === ra.Ka;
             console.log("Le visualiseur est en mode 3D :", is3D);
             return is3D;
-        };
-        
-        da.switch_viewer3D = function (K, R) {
-          console.log("Début de la fonction switch_viewer3D");
-          if (
+          };
+
+          da.switch_viewer3D = function (K, R) {
+            console.log("Début de la fonction switch_viewer3D");
+            if (
               xa === ra.mc ||
               xa === ra.nc ||
               (xa === ra.Y && !K) ||
               (xa === ra.Ka && K) ||
               Xa.isEnabled
-          )
+            )
               return !1;
-          if (xa === ra.va)
+            if (xa === ra.va)
               return ub !== ra.Ka || K
-                  ? ub === ra.Y && K
-                      ? ((ub = ra.Ka), Ba.ra(Da.Hb), Ba.cb(1), R && R(), console.log("Mode 3D activé"), !0)
-                      : !1
-                  : ((ub = ra.Y), Ba.ra(Da.Ja), Ba.cb(0), R && R(), console.log("Mode 3D désactivé"), !0);
-          var Z = 0,
+                ? ub === ra.Y && K
+                  ? ((ub = ra.Ka),
+                    Ba.ra(Da.Hb),
+                    Ba.cb(1),
+                    R && R(),
+                    console.log("Mode 3D activé"),
+                    !0)
+                  : !1
+                : ((ub = ra.Y),
+                  Ba.ra(Da.Ja),
+                  Ba.cb(0),
+                  R && R(),
+                  console.log("Mode 3D désactivé"),
+                  !0);
+            var Z = 0,
               pa = -1,
               Oa = 0;
-          xa === ra.Y
+            xa === ra.Y
               ? ((xa = ra.mc), (pa = J.lp))
               : xa === ra.Ka && ((xa = ra.nc), (pa = J.op));
-          var pb = Jc.mf();
-          Ab = setInterval(function () {
+            var pb = Jc.mf();
+            Ab = setInterval(function () {
               var ib = Jc.mf();
               Z += (ib - pb) / pa;
               1 <= Z &&
-                  ((Z = 1),
-                  xa === ra.mc
-                      ? ((xa = ra.Ka), Ba.ra(Da.Hb), console.log("Mode 3D activé"))
-                      : ((xa = ra.Y), Ba.ra(Da.Ja), console.log("Mode 3D désactivé")),
-                  R && R(),
-                  clearInterval(Ab),
-                  (Ab = null));
+                ((Z = 1),
+                xa === ra.mc
+                  ? ((xa = ra.Ka), Ba.ra(Da.Hb), console.log("Mode 3D activé"))
+                  : ((xa = ra.Y),
+                    Ba.ra(Da.Ja),
+                    console.log("Mode 3D désactivé")),
+                R && R(),
+                clearInterval(Ab),
+                (Ab = null));
               var Qb = xa === ra.nc || xa === ra.Y ? 1 - J.jp(Z) : J.ip(Z);
               Ba.cb(Qb);
               (xa !== ra.nc && xa !== ra.mc) ||
-                  0 !== Oa++ % 2 ||
-                  (Ba.ra(Da.Yf), Da.Yf.xo(Qb));
+                0 !== Oa++ % 2 ||
+                (Ba.ra(Da.Yf), Da.Yf.xo(Qb));
               pb = ib;
-          }, 0.016);
-          console.log("Fin de la fonction switch_viewer3D");
-          return !0;
-      };
-      
-      da.capture_image = function (K, R, Z, pa) {
-        console.log("Début de la capture d'image");
-        Xa.bc = K;
-        Xa.isEnabled = !0;
-        "undefined" === typeof isAllocate && (Z = !1);
-        (pa = "undefined" === typeof pa ? !1 : pa) && Ba.me(!1);
-        L();
-        Xa.D = function () {
-            console.log("Début du traitement après la capture d'image");
-            Ba.ej(0);
-            c.flush();
-            var Oa = mb.Zh(Z);
-            R(Oa);
-            pa && Ba.me(!0);
-            console.log("Fin du traitement après la capture d'image");
-        };
-        console.log("Fin de la capture d'image");
-    };
-    
-    da.capture_detection = function (K, R) {
-      console.log("Début de la capture de la détection");
-      var Z = null === la.Kb ? la.kb : la.$c;
-      f(K, function () {
-          console.log("Construction des données de capture");
-          return {
-              nd: T.pc.clone(),
-              Zf: ab.gi(),
-              Uf: ab.ei(),
-              background: Z.clone(),
-              pa: za.La.hi().clone(),
-              Tf: nb,
+            }, 0.016);
+            console.log("Fin de la fonction switch_viewer3D");
+            return !0;
           };
-      }).then(function (result) {
-          console.log("Fin de la capture de la détection");
-          R(result);
-      });
-  };
-  
+
+          da.capture_image = function (K, R, Z, pa) {
+            console.log("Début de la capture d'image");
+            Xa.bc = K;
+            Xa.isEnabled = !0;
+            "undefined" === typeof isAllocate && (Z = !1);
+            (pa = "undefined" === typeof pa ? !1 : pa) && Ba.me(!1);
+            L();
+            Xa.D = function () {
+              console.log("Début du traitement après la capture d'image");
+              Ba.ej(0);
+              c.flush();
+              var Oa = mb.Zh(Z);
+              R(Oa);
+              pa && Ba.me(!0);
+              console.log("Fin du traitement après la capture d'image");
+            };
+            console.log("Fin de la capture d'image");
+          };
+
+          da.capture_detection = function (K, R) {
+            console.log("Début de la capture de la détection");
+            var Z = null === la.Kb ? la.kb : la.$c;
+            f(K, function () {
+              console.log("Construction des données de capture");
+              return {
+                nd: T.pc.clone(),
+                Zf: ab.gi(),
+                Uf: ab.ei(),
+                background: Z.clone(),
+                pa: za.La.hi().clone(),
+                Tf: nb,
+              };
+            }).then(function (result) {
+              console.log("Fin de la capture de la détection");
+              R(result);
+            });
+          };
+
           da.process_image = function (K) {
             function R() {
               console.log("Début de la fonction R");
               return new Promise(function (Bb, rb) {
-                  Xa.Ug = ib.updateLightInterval;
-                  f(ib.nSteps, Z).then(function (jb) {
-                      Xa.Ug = 3;
-                      if (jb) {
-                          if (1 >= jb.hm().data[0]) {
-                              console.log("Aucun visage détecté");
-                              jb.I();
-                              rb("FACE_NOT_FOUND");
-                          } else {
-                              d(jb, ib.isMask, !0).then(function (Hd) {
-                                  console.log("Détection du visage réussie");
-                                  Ba.ra(Da.Ja);
-                                  jb.I();
-                                  Bb(Hd);
-                              });
-                          }
-                      } else {
-                          console.log("Erreur critique lors de la détection");
-                          rb("CRITICAL");
-                      }
-                  });
-                  u();
+                Xa.Ug = ib.updateLightInterval;
+                f(ib.nSteps, Z).then(function (jb) {
+                  Xa.Ug = 3;
+                  if (jb) {
+                    if (1 >= jb.hm().data[0]) {
+                      console.log("Aucun visage détecté");
+                      jb.I();
+                      rb("FACE_NOT_FOUND");
+                    } else {
+                      d(jb, ib.isMask, !0).then(function (Hd) {
+                        console.log("Détection du visage réussie");
+                        Ba.ra(Da.Ja);
+                        jb.I();
+                        Bb(Hd);
+                      });
+                    }
+                  } else {
+                    console.log("Erreur critique lors de la détection");
+                    rb("CRITICAL");
+                  }
+                });
+                u();
               });
-          }
-          
-          function Z() {
-            console.log("Début de la fonction Z");
-            return {
+            }
+
+            function Z() {
+              console.log("Début de la fonction Z");
+              return {
                 nd: T.pc.clone(),
                 Zf: !1,
                 Uf: !1,
                 background: la.kb.clone(!0),
                 pa: za.La.hi().clone(),
-            };
-        }
-        function pa() {
-          console.log("Début de la fonction pa");
-          return new Promise(function (Bb, rb) {
-              l(ib.modelSKU, ib.glassesDBURL)
+              };
+            }
+            function pa() {
+              console.log("Début de la fonction pa");
+              return new Promise(function (Bb, rb) {
+                l(ib.modelSKU, ib.glassesDBURL)
                   .then(function (jb) {
-                      console.log("Chargement du modèle :", jb.kn);
-                      da.load_model(
-                          jb.kn,
-                          jb.hn,
-                          function () {
-                              console.log("Modèle chargé avec succès");
-                              Bb();
-                          },
-                          ib.modelSKU,
-                          null,
-                          function () {
-                              console.log("Erreur : impossible de charger le modèle");
-                              rb("CANNOT_LOAD_MODEL");
-                          }
-                      );
+                    console.log("Chargement du modèle :", jb.kn);
+                    da.load_model(
+                      jb.kn,
+                      jb.hn,
+                      function () {
+                        console.log("Modèle chargé avec succès");
+                        Bb();
+                      },
+                      ib.modelSKU,
+                      null,
+                      function () {
+                        console.log("Erreur : impossible de charger le modèle");
+                        rb("CANNOT_LOAD_MODEL");
+                      }
+                    );
                   })
                   .catch(function (jb) {
-                      console.log("Erreur lors de la récupération des données du modèle :", jb);
-                      rb(jb);
+                    console.log(
+                      "Erreur lors de la récupération des données du modèle :",
+                      jb
+                    );
+                    rb(jb);
                   });
-          });
-      }
-      
-      function Oa() {
-        console.log("Début de la fonction Oa");
-        if (ib.image) {
-            console.log("Image disponible :", ib.image);
-            var Bb = ib.image;
-            pb(Bb);
-            return Promise.resolve(Bb);
-        }
-        return new Promise(function (rb) {
-            console.log("Chargement de l'image en base64 :", ib.imageBase64);
-            var jb = new Image();
-            jb.onload = function () {
-                console.log("Image chargée avec succès");
-                pb(jb);
-                rb();
-            };
-            jb.src = ib.imageBase64;
-        });
-    }
-    function pb(Bb) {
-      console.log("Début de la fonction pb");
-      var rb = Bb.width,
-          jb = Bb.height;
-      console.log("Dimensions de l'image :", rb, "x", jb);
-      if (rb !== J.width || jb !== J.height) {
-          console.log("Redimensionnement de l'élément Fa.element");
-          Fa.Md && ((Fa.element.width = rb), (Fa.element.height = jb)),
-          console.log("Redimensionnement des éléments graphiques");
-          E(rb, jb, ib.overSamplingFactor);
-      }
-      console.log("Dessin de l'image sur le contexte graphique de Fa.Lh");
-      Fa.Lh.drawImage(Bb, 0, 0);
-      console.log("Mise à jour de l'affichage");
-      L();
-  }
-  
+              });
+            }
+
+            function Oa() {
+              console.log("Début de la fonction Oa");
+              if (ib.image) {
+                console.log("Image disponible :", ib.image);
+                var Bb = ib.image;
+                pb(Bb);
+                return Promise.resolve(Bb);
+              }
+              return new Promise(function (rb) {
+                console.log(
+                  "Chargement de l'image en base64 :", ib.imageBase64 );
+                var jb = new Image();
+                jb.onload = function () {
+                  console.log("Image chargée avec succès");
+                  pb(jb);
+                  rb();
+                };
+                jb.src = ib.imageBase64;
+              });
+            }
+            function pb(Bb) {
+              console.log("Début de la fonction pb");
+              var rb = Bb.width,
+                jb = Bb.height;
+              console.log("Dimensions de l'image :", rb, "x", jb);
+              if (rb !== J.width || jb !== J.height) {
+                console.log("Redimensionnement de l'élément Fa.element");
+                Fa.Md && ((Fa.element.width = rb), (Fa.element.height = jb)),
+                  console.log("Redimensionnement des éléments graphiques");
+                E(rb, jb, ib.overSamplingFactor);
+              }
+              console.log(
+                "Dessin de l'image sur le contexte graphique de Fa.Lh"
+              );
+              Fa.Lh.drawImage(Bb, 0, 0);
+              console.log("Mise à jour de l'affichage");
+              L();
+            }
+
             var ib = Object.assign(
               {
-                imageBase64: null,
-                image: null,
-                FOVHztDeg: 0,
-                nSteps: 50,
-                updateLightInterval: 3,
-                overSamplingFactor: 2,
-                modelSKU: "undef",
-                glassesDBURL: "/MyApp_AR/api/gl/",
-                isMask: !0,
+                  imageBase64: null,
+                  image: null,
+                  FOVHztDeg: 0,
+                  nSteps: 50,
+                  updateLightInterval: 3,
+                  overSamplingFactor: 2,
+                  modelSKU: "undef",
+                  glassesDBURL: "/MyApp_AR/api/gl/",
+                  isMask: !0,
               },
               K
-            );
+          );
+          console.log("Paramètres de configuration initialisés avec succès :", ib);
+          
             console.log("Objet ib après l'assignation :", ib);
             console.log("J.Lc:", J.Lc);
-if (J.Lc) {
-    console.error("This feature cannot be called: J.Lc is true");
-    throw Error("This feature cannot be called");
-}
+            if (J.Lc) {
+              console.error("This feature cannot be called: J.Lc is true");
+              throw Error("This feature cannot be called");
+            }
 
-console.log("Value of cb.FOVforced before potentially changing:", cb.FOVforced);
-var Qb = cb.FOVforced;
-if (ib.FOVHztDeg) {
-    console.log("Changing cb.FOVforced to:", ib.FOVHztDeg);
-    cb.FOVforced = ib.FOVHztDeg;
-}
-Ba.ra(Da.Ja);
+            console.log(
+              "Value of cb.FOVforced before potentially changing:",
+              cb.FOVforced 
+            );
+            var Qb = cb.FOVforced;
+            if (ib.FOVHztDeg) {
+              console.log("Changing cb.FOVforced to:", ib.FOVHztDeg);
+              cb.FOVforced = ib.FOVHztDeg;
+            }
+            Ba.ra(Da.Ja);
 
-return new Promise(function (Bb, rb) {
-    console.log("Starting promise chain...");
-    return pa()
-        .then(function () {
-            console.log("pa() resolved successfully");
-            return Oa();
-        })
-        .then(function () {
-            console.log("Oa() resolved successfully");
-            return R();
-        })
-        .then(function (jb) {
-            console.log("R() resolved successfully");
-            cb.FOVforced = Qb;
-            console.log("Restoring cb.FOVforced to:", Qb);
-            Bb(jb);
-        })
-        .catch(function (error) {
-            console.error("An error occurred:", error);
-            rb(error);
-        });
-});
-
+            return new Promise(function (Bb, rb) {
+              console.log("Starting promise chain...");
+              return pa()
+                .then(function () {
+                  console.log("pa() resolved successfully");
+                  return Oa();
+                })
+                .then(function () {
+                  console.log("Oa() resolved successfully");
+                  return R();
+                })
+                .then(function (jb) {
+                  console.log("R() resolved successfully");
+                  cb.FOVforced = Qb;
+                  console.log("Restoring cb.FOVforced to:", Qb);
+                  Bb(jb);
+                })
+                .catch(function (error) {
+                  console.error("An error occurred:", error);
+                  rb(error);
+                });
+            });
           };
           da.process_offlineRendering = function (K, R, Z, pa, Oa) {
             console.log("Starting offline rendering process...");
             Ra.Wn();
-        
+
             if (pa) {
-                console.log("Drawing image to canvas...");
-                fa.fn.drawImage(mb.tb(), 0, 0);
-                mb.tb().parentNode.insertBefore(fa.Ab, mb.tb());
-                fa.Ab.setAttribute("class", "jeefitMask");
+              console.log("Drawing image to canvas...");
+              fa.fn.drawImage(mb.tb(), 0, 0);
+              mb.tb().parentNode.insertBefore(fa.Ab, mb.tb());
+              fa.Ab.setAttribute("class", "jeefitMask");
             }
-        
+
             da.set_model(R, function () {
-                console.log("Model set successfully");
-                da.set_materials(Z, function () {
-                    console.log("Materials set successfully");
-                    setTimeout(function () {
-                        d(K, pa)
-                            .then(function () {
-                                console.log("Offline rendering completed successfully");
-                                Oa();
-                            })
-                            .catch(function (error) {
-                                console.error("An error occurred during offline rendering:", error);
-                            });
-        
-                        Ra.Tn(
-                            pa
-                                ? function () {
-                                      console.log("Removing mask...");
-                                      mb.tb().parentNode.removeChild(fa.Ab);
-                                  }
-                                : !1
-                        );
-                    }, 1);
-                });
+              console.log("Model set successfully");
+              da.set_materials(Z, function () {
+                console.log("Materials set successfully");
+                setTimeout(function () {
+                  d(K, pa)
+                    .then(function () {
+                      console.log("Offline rendering completed successfully");
+                      Oa();
+                    })
+                    .catch(function (error) {
+                      console.error(
+                        "An error occurred during offline rendering:",
+                        error
+                      );
+                    });
+
+                  Ra.Tn(
+                    pa
+                      ? function () {
+                          console.log("Removing mask...");
+                          mb.tb().parentNode.removeChild(fa.Ab);
+                        }
+                      : !1
+                  );
+                }, 1);
+              });
             });
-        };
-        
+          };
+
           da.serialize_detection = function (K) {
+            console.log("Serializing detection data...");
             return K.cc();
           };
+
           da.unserialize_detection = function (K, R, Z) {
+            console.log("Unserializing detection data...");
             return fd.Zc(K, R, Z);
           };
+
           da.do_instantDetection = function (K, R) {
+            console.log("Performing instant detection...");
             gd.m(T.pc);
             gd.start(K, R);
           };
+
           da.relieve_DOM = function (K, R) {
+            console.log("Relieving DOM...");
             if (ka.Wb) return !1;
             k(R || 160);
             Ma.isEnabled = !1;
@@ -1727,7 +1855,9 @@ return new Promise(function (Bb, rb) {
             }, K);
             return !0;
           };
+
           da.switch_slow = function (K, R) {
+            console.log("Switching slow mode...");
             if (ka.Wb) return !1;
             "undefined" === typeof R && (R = J.rk);
             N && (k(J.Ca), F(), clearTimeout(N), (N = !1));
@@ -1735,8 +1865,11 @@ return new Promise(function (Bb, rb) {
             k(K ? R : J.Ca);
             return !0;
           };
+
           da.switch_sleep = function (K, R) {
+            console.log("Commencer à basculer en mode veille...");
             function Z() {
+              console.log("Fin de la commutation en mode veille.");
               da.isBusy = !1;
               K ? ((ub = xa), (xa = ra.va)) : ((xa = ub), u());
             }
@@ -1753,7 +1886,9 @@ return new Promise(function (Bb, rb) {
             R ? (pa = Ed(!K).then(Z)) : Z();
             return R ? pa : !0;
           };
+
           da.set_modelStandalone = function (K, R) {
+            console.log("Initialisation du modèle en mode autonome...");
             Ba.oe(!1);
             Kc.instance({
               ld: q,
@@ -1764,47 +1899,72 @@ return new Promise(function (Bb, rb) {
                 R && R();
                 Ra.Hg();
                 Ba.oe(!0);
+                console.log("Modèle en mode autonome initialisé avec succès.");
               },
             });
           };
+
           da.start_rendering = Ra.Hg;
           da.get_partsNames = function () {
-            return ab ? ab.sf() : [];
+            console.log("Obtention des noms des parties...");
+            var partsNames = ab ? ab.sf() : [];
+            console.log("Noms des parties obtenus :", partsNames);
+            return partsNames;
           };
+
           da.update_material = function (K, R, Z) {
-            if (!ab) return Promise.reject("MODEL_NOT_LOADED");
-            var pa = -1;
+            console.log("Mise à jour du matériau en cours...");
+            if (!ab) {
+              console.error("ERREUR : LE MODÈLE N'A PAS ÉTÉ CHARGÉ.");
+              return Promise.reject("MODEL_NOT_LOADED");
+            }
+            var partIndex = -1;
             switch (typeof K) {
               case "number":
-                pa = K;
+                partIndex = K;
                 break;
               case "string":
-                pa = ab.sf().findIndex(function (Oa) {
-                  return Oa.includes(K);
+                partIndex = ab.sf().findIndex(function (partName) {
+                  return partName.includes(K);
                 });
-                if (-1 === pa) return Promise.reject("PART_NOT_FOUND");
+                if (partIndex === -1) {
+                  console.error("ERREUR : LA PARTIE N'A PAS ÉTÉ TROUVÉE.");
+                  return Promise.reject("PART_NOT_FOUND");
+                }
                 break;
               default:
+                console.error("ERREUR : IDENTIFIANT DE PARTIE INVALIDE.");
                 return Promise.reject("INVALID_PART_ID");
             }
             void 0 === Z && (Z = !0);
-            ab.Xj(pa, R, Z);
+            ab.Xj(partIndex, R, Z);
+            console.log("Mise à jour du matériau terminée.");
             return Promise.resolve();
           };
+
           da.set_model = function (K, R, Z) {
-            ab &&
-              ((K = b([J.ea, J.wa, J.Wd + "/", K])),
+            if (ab) {
+              console.log("Chargement du modèle en cours...");
+              K = b([J.ea, J.wa, J.Wd + "/", K]);
               ab.replace(
                 K,
                 function () {
+                  console.log("Modèle chargé avec succès.");
                   R && R(ab.hl());
                 },
                 Z
-              ));
+              );
+            } else {
+              console.error("ERREUR : LE MODÈLE N'EXISTE PAS.");
+            }
           };
+
           da.update_tweaker = function (K) {
+            console.log("Mise à jour du réglage en cours...");
             m(K, !1);
+            console.log("Réglage mis à jour avec succès.");
           };
+
           da.set_tweaker = function (K, R) {
             function Z(pa) {
               m(pa, !0);
