@@ -1,0 +1,65 @@
+html....
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" /> : Définit les propriétés de la vue sur les appareils mobiles.
+<script src="/static/dist/ARLookWidget.js"></script> : Inclut le script JavaScript "ARLookWidget.js" situé dans le dossier "static/dist".
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> : Inclut le script JavaScript de Font Awesome pour les icônes.
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet" /> : Inclut la police de caractères "Roboto Condensed" depuis Google Fonts.
+<link rel='stylesheet' href='{% static 'css/ARLookWidget.css' %}' /> : Inclut la feuille de style CSS "ARLookWidget.css" depuis le dossier "static/css".
+<body onload="main()"> : C'est la balise principale qui contient tout le contenu visible de la page. L'événement onload se déclenche lorsque la page est complètement chargée dans le navigateur, et il appelle la fonction JavaScript main() pour initialiser la démonstration AR.
+<div class="content"> : Cette balise div contient tout le contenu principal de la page.
+<div class="header"> : C'est la balise div qui contient l'en-tête de la page.
+<div class="headerTitle">ARLook</div> : Affiche le titre de l'en-tête.
+<div id="ARLookWidget"> : Cette balise div contient le widget de la démonstration AR.
+<canvas id="ARLookWidgetCanvas"></canvas> : C'est la zone où la démonstration AR est rendue.
+<div class="ARLookWidgetControls ARLookWidgetControlsTop"> : Cette balise div contient les contrôles du widget AR.
+<button id="ARLookWidgetAdjust"> : Un bouton pour ajuster le widget.
+<button id="buttonResizeCanvas" onclick="test_resizeCanvas();"> : Un bouton pour redimensionner le widget.
+<div class="ARLookWidgetControls" id="ARLookWidgetChangeModelContainer"> : Cette balise div contient les boutons pour changer de modèle de lunettes.
+<button onclick="ARLOOKWIDGET.load('rayban_wayfarer_noir_vert')"> : Un bouton pour charger le modèle 1.
+<button onclick="ARLOOKWIDGET.load('rayban_round_cuivre_pinkBrownDegrade')"> : Un bouton pour charger le modèle 2.
+<button onclick="ARLOOKWIDGET.load_modelStandalone('glasses3D/glasses1.json')"> : Un bouton pour charger un modèle de lunettes à partir d'un fichier JSON.
+<div id="ARLookWidgetAdjustNotice"> : Cette balise div affiche un message pour ajuster les lunettes dans la démonstration AR.
+<div id="ARLookWidgetLoading"> : Cette balise div affiche un message de chargement lors du chargement de la démonstration AR.
+
+------------------------------------------------------------------------------------------------------------------------------------
+Une promesse est un objet JavaScript représentant une valeur qui peut être disponible immédiatement,
+ dans le futur ou jamais. Elle est utilisée pour gérer les opérations asynchrones de manière plus propre et plus efficace.
+// Création d'une nouvelle promesse
+const maPromesse = new Promise(function(resolve, reject) {
+  // Corps de la fonction exécutée de manière asynchrone
+
+  // Si l'opération réussit, appeler la fonction resolve avec le résultat
+  resolve("Résultat réussi");
+
+  // Si l'opération échoue, appeler la fonction reject avec une raison
+  // reject("Raison de l'échec");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ga est une fonction récursive qui clone un objet JavaScript en profondeur jusqu'à une profondeur spécifiée.
+--------------------------------------------------------------------------------------------------------------
+cd pour gérer la mise en place de la capture vidéo à partir d'une source vidéo spécifiée. Voici un aperçu de son fonctionnement :
+
+1/Vérification de la présence de l'élément vidéo et de la méthode getUserMedia dans navigator.mediaDevices.
+2/Configuration de l'élément vidéo en ajoutant des attributs comme autoplay et playsinline pour spécifier son comportement lors de la lecture.
+3/Si nécessaire, configuration du volume de l'élément vidéo à zéro ou mise en sourdine en fonction des paramètres.
+4/Appel de la fonction Fd pour obtenir les contraintes de la source vidéo.
+5/Utilisation de la méthode getUserMedia pour obtenir l'accès à la caméra et/ou au microphone.
+6/Si l'accès est autorisé, la fonction dd est appelée pour démarrer la capture vidéo.
+7/Si les contraintes de la source vidéo ne sont pas valides ou si la méthode getUserMedia n'est pas disponible, des messages d'erreur appropriés sont renvoyés.
+----------------------------------------------------------------------------------------------------------------
+

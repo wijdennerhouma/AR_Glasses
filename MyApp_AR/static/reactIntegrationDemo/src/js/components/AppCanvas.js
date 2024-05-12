@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 
-import { ARLook , ARLookWIDGET } from 'ARLookWidget'
+import { ARLook , ARLookWIDGET } from 'static/dist/ARLookWidget'
 import { ARLOOKWIDGET } from '../../../../dist/ARLookWidget.module';
 
 
@@ -8,7 +8,7 @@ import { ARLOOKWIDGET } from '../../../../dist/ARLookWidget.module';
 
 
 function init_VTOWidget(placeHolder, canvas, toggle_loading){
-  ARLOOKWIDGETWIDGET.start({
+  ARLOOKWIDGET.start({
     placeHolder,
     canvas,
     callbacks: {
@@ -65,21 +65,21 @@ function AppCanvas(props){
   }
 
   const enter_adjustMode = () => {
-    JEELIZVTOWIDGET.enter_adjustMode();
+    ARLOOKWIDGET.enter_adjustMode();
     refAdjustEnter.current.style.display = 'none';
     refAdjust.current.style.display = 'block';
     refChangeModel.current.style.display = 'none';
   }
 
   const exit_adjustMode = () => {
-    JEELIZVTOWIDGET.exit_adjustMode();
+    ARLOOKWIDGET.exit_adjustMode();
     refAdjustEnter.current.style.display = 'block';
     refAdjust.current.style.display = 'none';
     refChangeModel.current.style.display = 'block';
   }
 
   const set_glassesModel = (sku) => {
-    JEELIZVTOWIDGET.load(sku);
+    ARLOOKWIDGET.load(sku);
   }
 
   useEffect(() => {
@@ -88,7 +88,7 @@ function AppCanvas(props){
     init_VTOWidget(placeHolder, canvas, toggle_loading);
 
     return () => {
-      JEELIZVTOWIDGET.destroy();
+      ARLOOKWIDGET.destroy();
     }
   }, []);
 
@@ -110,7 +110,7 @@ function AppCanvas(props){
       </div>
 
       <div ref={refChangeModel} className='ARLookWidgetControls ARLookWidgetChangeModelContainer'>
-        <button className='ARLookWidgetButton' onClick={set_glassesModel.bind(this, 'Modèle de lunettes 1')}>Model 1</button>
+        <button className='ARLookWidgetButton' onClick={set_glassesModel.bind(this, 'rayban_wayfarer_noir_vert')}>Model 1</button>
         <button className='ARLookWidgetButton' onClick={set_glassesModel.bind(this, 'rayban_round_cuivre_pinkBrownDegrade')}>Model 2</button>
         <button className='ARLookWidgetButton' onClick={set_glassesModel.bind(this, 'carrera_113S_blue')}>Model 3</button>
       </div>

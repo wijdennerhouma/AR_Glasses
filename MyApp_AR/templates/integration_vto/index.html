@@ -47,7 +47,7 @@
         // look if a SKU is provided as a URL parameters:
         const queryString = window.location.search;
         const URLParams = new URLSearchParams(queryString);
-        const sku = URLParams.get("nom") || "glasses_blue";
+        const sku = URLParams.get("nom") || "rayban_wayfarer_noir_vert";
         console.log("Initial SKU =", sku);
         return sku;
       }
@@ -110,6 +110,8 @@
       } 
 
       function load_modelBySKU() {
+         
+        console.log("---------------load sku-----------------");
         const sku = prompt(
           "Please enter a glasses model SKU:",
           "rayban_wayfarer_havane_marron"
@@ -146,17 +148,17 @@
 
         <!-- CHANGE MODEL BUTTONS: -->
         <div class="ARLookWidgetControls" id="ARLookWidgetChangeModelContainer">
-          <button onclick="ARLOOKWIDGET.load('glasses_blue')">
+          <button onclick="ARLOOKWIDGET.load('rayban_wayfarer_noir_vert')">
             Model 1
           </button>
-          <button
+         <!-- <button
             onclick="ARLOOKWIDGET.load('rayban_round_cuivre_pinkBrownDegrade')"
           >
             Model 2
           </button>
           <button
             onclick="ARLOOKWIDGET.load_modelStandalone('glasses3D/glasses1.json')"
-          >
+          >-->
            
         </div>
 

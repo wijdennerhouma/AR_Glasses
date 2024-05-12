@@ -1,5 +1,6 @@
 var ARLookWidget = (function () {
   function ja() {
+    console.log("La fonction ja() a été exécutée.");
     Sa.mode = ob.realtime;
     Sa.isRT = !0;
     Ca.adjust = document.getElementById("ARLookWidgetAdjust");
@@ -17,8 +18,10 @@ var ARLookWidget = (function () {
     }
     $b.enabled && Wa.do_instantDetection($b.interval, $b.callback);
     jc && (jc(!0), (jc = null));
+    console.log("La fonction ja() a été exécutée.");
   }
   function na() {
+    console.log("La fonction na() a été exécutée.");
     var S = document.createElement("style");
     S.setAttribute("type", "text/css");
     S.innerHTML =
@@ -27,25 +30,30 @@ var ARLookWidget = (function () {
     1 <= V.length ? V[0].appendChild(S) : document.body.appendChild(S);
   }
   function sa(S) {
+    console.log("La fonction sa() a été exécutée.");
     S &&
       (S.classList.remove("_arlookForceHide"),
       "none" === window.getComputedStyle(S).display &&
         S.classList.add("_arlookForceShow"));
   }
   function Pa(S) {
+    console.log("La fonction Pa() a été exécutée.");
     S &&
       (S.classList.add("_arlookForceHide"),
       S.classList.remove("_arlookForceShow"));
   }
   function wa(S, V) {
+    console.log("La fonction wa(S, V) a été exécutée.");
     if (S) for (var ua in V) S.style[ua] = V[ua];
   }
   function qb(S) {
+    console.log("La fonction qb(S) a été exécutée.");
     if (!S) return { width: 0, height: 0 };
     S = S.getBoundingClientRect();
     return { width: S.width, height: S.height };
   }
   function va(S) {
+    console.log("La fonction va(S) a été exécutée.");
     return new Promise(function (V, ua) {
       var Ga = new XMLHttpRequest();
       Ga.open("GET", S, !0);
@@ -64,6 +72,7 @@ var ARLookWidget = (function () {
     });
   }
   function Ja(S, V) {
+    console.log("La fonction Ja(S, V) a été exécutée.");
     return fetch(S, { method: "GET", mode: "cors", cache: "no-cache" })
       .then(function (ua) {
         return ua.json();
@@ -76,6 +85,7 @@ var ARLookWidget = (function () {
       });
   }
   function Ua(S, V) {
+    console.log("La fonction Ua(S, V) a été exécutée.");
     return new Promise(function (ua, Ga) {
       va(S)
         .then(function (Ka) {
@@ -85,14 +95,18 @@ var ARLookWidget = (function () {
     });
   }
   function eb() {
+    console.log("La fonction eb() a été exécutée.");
+    
     wb.toggle_loading(!1);
     Sa.mode = ob.realtime;
     sb("INVALID_SKU");
   }
   function sb(S) {
+    console.log("La fonction sb(S) a été exécutée.");
     Hc.error ? Hc.error(S) : console.log("ERROR:", S);
   }
   function Sb(S) {
+    console.log("La fonction Sb(S) a été exécutée.");
     var V = qb(Ca.container),
       ua = Math.abs(fb.displayWidth - V.width),
       Ga = Math.abs(fb.displayHeight - V.height);
@@ -129,6 +143,7 @@ var ARLookWidget = (function () {
         });
   }
   function yb() {
+    console.log("La fonction yb() a été exécutée.");
     [Ca.adjust, Ca.changeModelContainer, Ca.buttonResizeCanvas].forEach(Pa);
     Sa.mode = ob.adjust;
     [Ca.adjustNotice, Ca.adjustExit].forEach(sa);
@@ -137,6 +152,7 @@ var ARLookWidget = (function () {
     vc("ADJUST_START");
   }
   function Fb() {
+    console.log("La fonction Fb() a été exécutée.");
     [Ca.adjustNotice, Ca.adjustExit].forEach(Pa);
     [Ca.adjust, Ca.changeModelContainer, Ca.buttonResizeCanvas].forEach(sa);
     Ca.cv.style.cursor = "auto";
@@ -145,6 +161,7 @@ var ARLookWidget = (function () {
     vc("ADJUST_END");
   }
   function ic() {
+    console.log("La fonction ic() a été exécutée.");
     if (!Ca.trackIframe) {
       var S = Kb.appstaticURL + "jeewidget/";
       Ca.trackIframe = document.createElement("iframe");
@@ -166,6 +183,7 @@ var ARLookWidget = (function () {
     }
   }
   function Zb(S, V) {
+    console.log("La fonction Zb(S, V) a été exécutée.");
     if (Ca.trackIframe) {
       var ua = location.href.split("?").shift().split("://").pop();
       ua = ua.split("/").shift();
@@ -178,18 +196,21 @@ var ARLookWidget = (function () {
     }
   }
   function Yc(S, V) {
+    console.log("La fonction Yc(S, V) a été exécutée.");
     Sa.mode = ob.realtime;
     V && V();
     wb.toggle_loading(!1);
     Zb("COUNT_TRY_ON_SESSION", S);
   }
   function Zc(S) {
+    console.log("La fonction Zc(S) a été exécutée.");
     if (S.isAutoVTO)
       return Kb.autoVTOURL + "getByProductPage/" + encodeURIComponent(S.mod);
     var V = S.mod + ".json";
     return S.isStandalone ? kc + "models3DStandalone/" + V : V;
   }
   function $c(S, V, ua, Ga) {
+    console.log("La fonction $c(S, V, ua, Ga) a été exécutée.");
     var Ka = Zc(V);
     V.isAutoVTO
       ? Ja(Ka, S).then(ua)
@@ -198,12 +219,15 @@ var ARLookWidget = (function () {
       : Wa.load_model(Ka, V.mats, Yc.bind(null, S, ua), S, Ga);
   }
   function Xc(S, V, ua) {
+    console.log("La fonction Xc(S, V, ua) a été exécutée.");
     Wa.set_modelStandalone(V, Yc.bind(null, S, ua), S);
   }
   function vc(S) {
+    console.log("La fonction vc(S) a été exécutée.");
     (S = ad[S]) && S();
   }
   function Ic() {
+    console.log("La fonction Ic() a été exécutée.");
     Tb && Tb.detach();
     Tb = null;
     Tb = new wd(Ca.container, function (S) {
@@ -211,6 +235,7 @@ var ARLookWidget = (function () {
     });
   }
   function Wc(S, V) {
+    console.log("La fonction Wc(S, V) a été exécutée.");
     V = V || { scale: 1 };
     S
       ? (Lb.set_tweaker({
@@ -226,6 +251,7 @@ var ARLookWidget = (function () {
       : (Lb.set_tweaker({ preScale: V.scale }), bd());
   }
   function zd(S, V) {
+    console.log("La fonction zd(S, V) a été exécutée.");
     if (!S.materials) return [0, 0, 0, 0];
     if (!S.lensesYGradientEnabled || "lenses" !== V.id)
       return [V.alpha, V.alpha, 0, 0];
@@ -239,6 +265,7 @@ var ARLookWidget = (function () {
     ];
   }
   function xd(S) {
+    console.log("La fonction xd(S) a été exécutée.");
     S && 0 !== S.materials.length
       ? S.materials.forEach(function (V) {
           var ua = zd(S, V);
@@ -262,6 +289,7 @@ var ARLookWidget = (function () {
       : bd();
   }
   function Ad(S) {
+    console.log("La fonction Ad(S) a été exécutée.");
     return (S = S.find(function (V) {
       return "temples" === V.id;
     }))
@@ -269,6 +297,7 @@ var ARLookWidget = (function () {
       : [];
   }
   function yd(S, V) {
+    console.log("La fonction yd(S, V) a été exécutée.");
     if (V) {
       var ua = Ad(S);
       2 === ua.length &&
@@ -283,12 +312,14 @@ var ARLookWidget = (function () {
     }
   }
   function bd() {
+    console.log("La fonction bd() a été exécutée.");
     Lb.get_materialsSpec().then(function (S) {
       S = S.length;
       for (var V = 0; V < S; ++V) Lb.update_material(V, { alphaUsage: 1 });
     });
   }
   function Bd(S) {
+    console.log("La fonction Bd(S) a été exécutée.");
     return S
       ? "json" === S.split(".").pop().toLowerCase()
         ? Promise.resolve(S)
@@ -299,9 +330,11 @@ var ARLookWidget = (function () {
   }
   var Lb = (function () {
       function S(a, b) {
+        console.log("Lb : La fonction S(a, b) a été exécutée.");
         return a[0] * (1 - b) + a[1] * b;
       }
       function V(a, b) {
+        console.log("Lb :La fonction V(a, b) a été exécutée.");
         var d = new XMLHttpRequest();
         d.open("GET", a, !0);
         d.withCredentials = !1;
@@ -313,11 +346,13 @@ var ARLookWidget = (function () {
         d.send();
       }
       function ua(a, b) {
+        console.log("Lb :La fonction ua(a, b) a été exécutée.");
         V(a + "", function (d) {
           b(JSON.parse(d));
         });
       }
       function Ga(a, b) {
+        console.log("Lb :La fonction Ga(a, b) a été exécutée.");
         if (0 === b || "object" !== typeof a) return a;
         a = Object.assign({}, a);
         b = void 0 === b || -1 === b ? -1 : b - 1;
@@ -325,11 +360,13 @@ var ARLookWidget = (function () {
         return a;
       }
       function Ka(a) {
+        console.log("Lb :La fonction Ka(a) a été exécutée.");
         return 0.5 > a
           ? 4 * a * a * a
           : (a - 1) * (2 * a - 2) * (2 * a - 2) + 1;
       }
       function vb(a) {
+        console.log("Lb :La fonction vb(a) a été exécutée.");
         switch (a) {
           case "relu":
             return "gl_FragColor=max(vec4(0.),gl_FragColor);";
@@ -348,16 +385,19 @@ var ARLookWidget = (function () {
         }
       }
       function La(a, b) {
+        console.log("Lb :La fonction La(a, b) a été exécutée.");
         var d = b % 8;
         return (a[(b - d) / 8] >> (7 - d)) & 1;
       }
       function kb(a, b, d) {
+        console.log("Lb :La fonction kb(a, b, d) a été exécutée.");
         var f = 1,
           l = 0;
         for (d = b + d - 1; d >= b; --d) (l += f * La(a, d)), (f *= 2);
         return l;
       }
       function zb(a) {
+        console.log("Lb :La fonction zb(a) a été exécutée.");
         a = a.data;
         a =
           "undefined" === typeof btoa
@@ -368,12 +408,15 @@ var ARLookWidget = (function () {
         return d;
       }
       function Gb(a) {
+        console.log("Lb :La fonction Gb(a) a été exécutée.");
         return "string" === typeof a ? JSON.parse(a) : a;
       }
       function Pb(a) {
+        console.log("Lb :La fonction Pb(a) a été exécutée.");
         return "undefined" === typeof Gb(a).nb ? Mb(a) : ac(a);
       }
       function ac(a) {
+        console.log("Lb :La fonction ac(a) a été exécutée.");
         var b = Gb(a);
         a = b.nb;
         if (0 === a) return new Uint8Array(b.nb);
@@ -384,6 +427,7 @@ var ARLookWidget = (function () {
         return f;
       }
       function Mb(a) {
+        console.log("Lb :La fonction Mb(a) a été exécutée.");
         var b = Gb(a);
         a = b.ne;
         var d = b.nf,
@@ -412,6 +456,7 @@ var ARLookWidget = (function () {
         return l;
       }
       function lc(a) {
+        console.log("Lb :La fonction lc(a) a été exécutée.");
         var b = null,
           d = null,
           f = null,
@@ -489,10 +534,12 @@ var ARLookWidget = (function () {
         "undefined" !== typeof a && ((w = Object.assign({}, h, a)), this.m());
       }
       function Nb(a, b) {
+        console.log("Lb :La fonction Nb(a, b) a été exécutée.");
         a[b] = !0;
         a.setAttribute(b, "true");
       }
       function mc() {
+        console.log("Lb :La fonction mc() a été exécutée.");
         var a = !1,
           b = navigator.userAgent || navigator.vendor || window.opera;
         if (
@@ -507,6 +554,7 @@ var ARLookWidget = (function () {
         return a;
       }
       function wc(a, b) {
+        console.log("Lb :La fonction wc(a, b) a été exécutée.");
         window.addEventListener(
           "beforeunload",
           function () {
@@ -522,12 +570,14 @@ var ARLookWidget = (function () {
         );
       }
       function xc() {
+        console.log("Lb :La fonction xc() a été exécutée.");
         var a = navigator.userAgent.toLowerCase();
         return -1 !== a.indexOf("safari") && -1 === a.indexOf("chrome")
           ? !0
           : !1;
       }
       function yc(a) {
+        console.log("Lb :La fonction yc(a) a été exécutée.");
         if (!a) return a;
         var b = null;
         if (a.video) {
@@ -546,18 +596,21 @@ var ARLookWidget = (function () {
         return b;
       }
       function nc(a, b) {
+        console.log("Lb :La fonction nc(a, b) a été exécutée.");
         b &&
           ((a.video = a.video || {}),
           (a.video.deviceId = { exact: b }),
           a.video.facingMode && delete a.video.facingMode);
       }
       function bc(a) {
+        console.log("Lb :La fonction bc(a) a été exécutée.");
         var b = a.video.width;
         a.video.width = a.video.height;
         a.video.height = b;
         return a;
       }
       function zc(a) {
+        console.log("Lb :La fonction zc(a) a été exécutée.");
         function b(u) {
           return [
             480, 576, 640, 648, 720, 768, 800, 960, 1080, 1152, 1280, 1366,
@@ -567,12 +620,14 @@ var ARLookWidget = (function () {
           });
         }
         function d(u) {
+          console.log("Lb :La fonction d(u) a été exécutée.");
           var y = yc(a);
           u = u(y);
           l.push(u);
           f(u);
         }
         function f(u) {
+          console.log("Lb :La fonction f(u) a été exécutée.");
           if (u.video && u.video.facingMode && u.video.facingMode.exact) {
             var y = u.video.facingMode.exact;
             u = yc(u);
@@ -648,6 +703,7 @@ var ARLookWidget = (function () {
         return l;
       }
       function oc(a) {
+        console.log("Lb :La fonction oc(a) a été exécutée.");
         a.volume = 0;
         Nb(a, "muted");
         if (xc()) {
@@ -667,6 +723,7 @@ var ARLookWidget = (function () {
         }
       }
       function Ed(a) {
+        console.log("Lb :La fonction Ed(a) a été exécutée.");
         var b = Fa.element,
           d = Fa.wh;
         return null === b
@@ -681,6 +738,7 @@ var ARLookWidget = (function () {
             });
       }
       function dd(a, b, d, f) {
+        console.log("Lb :La fonction dd(a, b, d, f) a été exécutée.");
         function l(w) {
           p || ((p = !0), d(w));
         }
@@ -689,6 +747,7 @@ var ARLookWidget = (function () {
           .getUserMedia(f)
           .then(function (w) {
             function h() {
+              console.log("Lb :La fonction h() a été exécutée.");
               setTimeout(function () {
                 if (a.currentTime) {
                   var q = a.videoHeight;
@@ -708,6 +767,7 @@ var ARLookWidget = (function () {
               }, 700);
             }
             function m() {
+              console.log("Lb :La fonction m() a été exécutée.");
               a.removeEventListener("loadeddata", m, !1);
               var q = a.play();
               oc(a);
@@ -732,6 +792,7 @@ var ARLookWidget = (function () {
           });
       }
       function cd(a, b, d, f) {
+        console.log("Lb :La fonction cd(a, b, d, f) a été exécutée.");
         a
           ? navigator.mediaDevices && navigator.mediaDevices.getUserMedia
             ? (Nb(a, "autoplay"),
@@ -743,6 +804,7 @@ var ARLookWidget = (function () {
                   b,
                   function () {
                     function l(w) {
+                      console.log("Lb : cd :La fonction l(w) a été exécutée.");
                       if (0 === w.length)
                         d("NO_VALID_MEDIASTREAM_FALLBACK_CONSTRAINTS");
                       else {
@@ -767,6 +829,7 @@ var ARLookWidget = (function () {
           : d && d("VIDEO_NOT_PROVIDED");
       }
       function Fd(a) {
+        console.log("Lb :La fonction Fd(a) a été exécutée.");
         if (!a || !a.video || !a.video.facingMode)
           return Promise.resolve("NO_VIDEO_CONSTRAINTS");
         if (a.video.deviceId) return Promise.resolve("DEVICEID_ALREADY_SET");
@@ -794,6 +857,7 @@ var ARLookWidget = (function () {
           : Promise.resolve("NO_PREFERRED_CAMERAS");
       }
       function ed(a) {
+        console.log("Lb :La fonction ed(a) a été exécutée.");
         navigator.mediaDevices && navigator.mediaDevices.enumerateDevices
           ? navigator.mediaDevices
               .enumerateDevices()
@@ -817,13 +881,16 @@ var ARLookWidget = (function () {
           : a(!1, "NOTSUPPORTED");
       }
       function Gd() {
+        console.log("Lb :La fonction Gd() a été exécutée.");
         function a(K) {
+          console.log("Lb : Gd :La fonction a(K) a été exécutée.");
           K = K ? Ac.ff : 1;
           ia.width = K * J.width;
           ia.height = K * J.height;
           return ia;
         }
         function b(K) {
+          console.log("Lb :La fonction b(K) a été exécutée.");
           var R = K.length - 1,
             Z = K[R];
           if ("data:" === Z.substring(0, 5)) return Z;
@@ -836,6 +903,7 @@ var ARLookWidget = (function () {
           return Z;
         }
         function d(K, R, Z) {
+          console.log("Lb :La fonction d(K, R, Z) a été exécutée.");
           return new Promise(function (pa) {
             Ba.Jj(R);
             Ea.ba();
@@ -855,6 +923,7 @@ var ARLookWidget = (function () {
           });
         }
         function f(K, R) {
+          console.log("Lb :La fonction f(K, R) a été exécutée.");
           Da.Xc = 0.5;
           return new Promise(function (Z) {
             Xa.bc = K;
@@ -867,6 +936,7 @@ var ARLookWidget = (function () {
           });
         }
         function l(K, R) {
+          console.log("Lb :La fonction l(K, R) a été exécutée.");
           return new Promise(function (Z, pa) {
             ua(R + K, function (Oa) {
               Oa.error
@@ -876,6 +946,7 @@ var ARLookWidget = (function () {
           });
         }
         function p(K, R) {
+          console.log("Lb :La fonction p(K, R) a été exécutée.");
           var Z = b([J.ea, J.wa, J.Vd + "/"]);
           R = R.map(function (pa) {
             return Z + pa;
@@ -894,6 +965,7 @@ var ARLookWidget = (function () {
           });
         }
         function w(K, R) {
+          console.log("Lb :La fonction w(K, R) a été exécutée.");
           if (!R) return K;
           K = K.slice(0);
           var Z = ab.sf().map(function (ib) {
@@ -909,6 +981,7 @@ var ARLookWidget = (function () {
           return K;
         }
         function h(K, R) {
+          console.log("Lb :La fonction h(K, R) a été exécutée.");
           return new Promise(function (Z, pa) {
             da.set_model(
               K,
@@ -926,6 +999,7 @@ var ARLookWidget = (function () {
           });
         }
         function m(K, R) {
+          console.log("Lb :La fonction m(K, R) a été exécutée.");
           K &&
             (R && A(),
             K.preOffset && (tb = K.preOffset),
@@ -937,9 +1011,11 @@ var ARLookWidget = (function () {
             da.ready && Ra.we());
         }
         function q(K) {
+          console.log("Lb :La fonction q(K) a été exécutée.");
           K.tweaker ? m(K.tweaker, !0) : (A(), da.ready && Ra.we());
         }
         function x() {
+          console.log("Lb :La fonction x() a été exécutée.");
           da.load_model = function (K, R, Z, pa, Oa, pb) {
             if (da.isBusy) return !1;
             da.isBusy = !0;
@@ -1036,6 +1112,7 @@ var ARLookWidget = (function () {
           };
           da.process_image = function (K) {
             function R() {
+              console.log("Lb :La fonction R() a été exécutée.");
               return new Promise(function (Bb, rb) {
                 Xa.Ug = ib.updateLightInterval;
                 f(ib.nSteps, Z).then(function (jb) {
@@ -1054,6 +1131,7 @@ var ARLookWidget = (function () {
               });
             }
             function Z() {
+              console.log("Lb :La fonction Z() a été exécutée.");
               return {
                 nd: T.pc.clone(),
                 Zf: !1,
@@ -1063,6 +1141,7 @@ var ARLookWidget = (function () {
               };
             }
             function pa() {
+              console.log("Lb :La fonction pa() a été exécutée.");
               return new Promise(function (Bb, rb) {
                 l(ib.modelSKU, ib.glassesDBURL)
                   .then(function (jb) {
@@ -1085,6 +1164,7 @@ var ARLookWidget = (function () {
               });
             }
             function Oa() {
+              console.log("Lb :La fonction Oa() a été exécutée.");
               if (ib.image) {
                 var Bb = ib.image;
                 pb(Bb);
@@ -1100,6 +1180,7 @@ var ARLookWidget = (function () {
               });
             }
             function pb(Bb) {
+              console.log("Lb :La fonction pb(Bb) a été exécutée.");
               var rb = Bb.width,
                 jb = Bb.height;
               if (rb !== J.width || jb !== J.height)
@@ -1117,7 +1198,7 @@ var ARLookWidget = (function () {
                 updateLightInterval: 3,
                 overSamplingFactor: 2,
                 modelSKU: "undef",
-                glassesDBURL: "/MyApp_AR/api/gl/" ,
+                glassesDBURL: "/MyApp_AR/api/gl/",
                 isMask: !0,
               },
               K
@@ -1194,6 +1275,7 @@ var ARLookWidget = (function () {
           };
           da.switch_sleep = function (K, R) {
             function Z() {
+              console.log("Lb :La fonction Z() a été exécutée.");
               da.isBusy = !1;
               K ? ((ub = xa), (xa = ra.va)) : ((xa = ub), u());
             }
@@ -1304,6 +1386,7 @@ var ARLookWidget = (function () {
           };
         }
         function I() {
+          console.log("La fonction I() a été exécutée.");
           ha.Xg(Ac.Ll);
           Ra.Yc();
           J.Zb && (Ea.reset(), za.La.oh(Fa.V), za.La.nh());
@@ -1314,27 +1397,32 @@ var ARLookWidget = (function () {
           Bc.splice(0);
         }
         function u() {
+          console.log("La fonction u() a été exécutée.");
           Ob.reset();
           Db.stop();
           Ea.ba();
           g(0);
         }
         function y(K) {
+          console.log("La fonction y(K) a été exécutée.");
           ab && (Ba.Nn(ab), ab.remove());
           Ba.lk(K);
           ab = K;
         }
         function A() {
+          console.log("La fonction A() a été exécutée.");
           tb = [0, 0, 0];
           Ub = 1;
           Vb = v = t = 0;
           Wb = J.Oc;
         }
         function k(K) {
+          console.log("La fonction k(K) a été exécutée.");
           r = K;
           Db.update({ Ca: r });
         }
         function g(K) {
+          console.log("La fonction g(K) a été exécutée.");
           Ma.Bb = -1;
           if (Xa.isEnabled) Ma.Bb = Xa.bc;
           else if (lb.isEnabled) Ma.Bb = lb.bc;
@@ -1378,10 +1466,12 @@ var ARLookWidget = (function () {
                 xa !== ra.va && Db.qg(g)));
         }
         function F() {
+          console.log("La fonction F() a été exécutée.");
           ta = Jc.mf();
           Ma.isEnabled = !0;
         }
         function L() {
+          console.log("La fonction L() a été exécutée.");
           var K = 15;
           if (!Fa.Md) {
             if (!Fa.element.videoWidth)
@@ -1410,6 +1500,7 @@ var ARLookWidget = (function () {
           return !0;
         }
         function D() {
+          console.log("La fonction D() a été exécutée.");
           la.bk = ba.instance({
             isPot: !0,
             isLinear: !0,
@@ -1437,7 +1528,9 @@ var ARLookWidget = (function () {
             }));
         }
         function G() {
+          console.log("La fonction G() a été exécutée.");
           function K() {
+            console.log("La fonction K() a été exécutée.");
             return {
               width: 3,
               height: 1,
@@ -1476,6 +1569,7 @@ var ARLookWidget = (function () {
           });
         }
         function e(K) {
+          console.log("La fonction e(K) a été exécutée.");
           la.mg = K;
           if (Ha) {
             Ha = !1;
@@ -1520,6 +1614,7 @@ var ARLookWidget = (function () {
           Y.l(!1, !1);
         }
         function n() {
+          console.log("La fonction N() a été exécutée.");
           Da.Fi = ta;
           Da.be.J();
           aa.set(H.wi ? "s73" : "s72");
@@ -1528,6 +1623,7 @@ var ARLookWidget = (function () {
           za.La.ak(Fa.V, Da.be, Da.Xc);
         }
         function z() {
+          console.log("La fonction z() a été exécutée.");
           return new Promise(function (K) {
             V(id(), function (R) {
               R = JSON.parse(R);
@@ -1546,6 +1642,7 @@ var ARLookWidget = (function () {
           });
         }
         function P(K) {
+          console.log("La fonction P(K) a été exécutée.");
           a(K);
           K = J.width;
           var R = J.height;
@@ -1564,6 +1661,7 @@ var ARLookWidget = (function () {
           ka.Oa = !0;
         }
         function B() {
+          console.log("La fonction B() a été exécutée.");
           aa.j("s64", [
             { type: "1i", name: "u1", value: 0 },
             { type: "1i", name: "u41", value: 1 },
@@ -1641,6 +1739,7 @@ var ARLookWidget = (function () {
           ]);
         }
         function E(K, R, Z) {
+          console.log("La fonction E(K, R, Z) a été exécutée.");
           var pa = 0 === Z,
             Oa = a(pa);
           J.width = K;
@@ -1661,6 +1760,7 @@ var ARLookWidget = (function () {
           gb.Kj();
         }
         function M() {
+          console.log("La fonction M() a été exécutée.");
           Db.stop();
           ka.hb && (clearTimeout(ka.hb), (ka.hb = null));
           if (!ka.Wb) {
@@ -2282,6 +2382,7 @@ var ARLookWidget = (function () {
         return Ra;
       }
       function Kd(a) {
+        console.log("La fonction Kd(a) a été exécutée.");
         var b = document.createElement("link");
         b.setAttribute("href", a);
         "json" === a.split(".").pop().toLowerCase()
@@ -2293,6 +2394,7 @@ var ARLookWidget = (function () {
         document.head.appendChild(b);
       }
       function id(a) {
+        console.log("La fonction id(a) a été exécutée.");
         if (!a) {
           a = J.ea;
           var b = J.ad.split("://").shift();
@@ -2303,6 +2405,7 @@ var ARLookWidget = (function () {
         return a;
       }
       function kd() {
+        console.log("La fonction kd() a été exécutée.");
         return new Promise(function (a, b) {
           Nc && Nc();
           Fa.Md = !1;
@@ -2339,6 +2442,7 @@ var ARLookWidget = (function () {
         });
       }
       function ld(a) {
+        console.log("La fonction ld(a) a été exécutée.");
         Fa.element = a;
         a = Fa.element.videoWidth || Fa.element.width;
         var b = Fa.element.videoHeight || Fa.element.height;
@@ -2356,6 +2460,7 @@ var ARLookWidget = (function () {
           });
       }
       function Ld() {
+        console.log("La fonction Ld() a été exécutée.");
         var a = document.createElement("canvas");
         a.width = J.width;
         a.height = J.height;
@@ -2364,15 +2469,18 @@ var ARLookWidget = (function () {
         return ld(a);
       }
       function dc(a) {
+        console.log("La fonction dc(a) a été exécutée.");
         return 3 === arguments.length ? this.rb(arguments) : this.set(a);
       }
       function md(a, b) {
+        console.log("La fonction md(a, b) a été exécutée.");
         b = Math.floor(b);
         a.r = ((b >> 16) & 255) / 255;
         a.Z = ((b >> 8) & 255) / 255;
         a.b = (b & 255) / 255;
       }
       function Md(a, b) {
+        console.log("La fonction Md(a, b) a été exécutée.");
         function d(h) {
           void 0 !== h &&
             1 > parseFloat(h) &&
@@ -2451,12 +2559,14 @@ var ARLookWidget = (function () {
             : console.warn("JETHREE.Color: Unknown color " + b));
       }
       function Ec(a, b, d, f) {
+        console.log("La fonction Ec(a, b, d, f) a été exécutée.");
         this.F = a || 0;
         this.G = b || 0;
         this.H = d || 0;
         this.T = void 0 !== f ? f : 1;
       }
       function nd(a, b, d) {
+        console.log("La fonction nd(a, b, d) a été exécutée.");
         var f = b.F,
           l = b.G,
           p = b.H;
@@ -2472,15 +2582,18 @@ var ARLookWidget = (function () {
         return a;
       }
       function ec(a, b) {
+        console.log("La fonction ec(a, b) a été exécutée.");
         this.x = a || 0;
         this.y = b || 0;
       }
       function Za(a, b, d) {
+        console.log("La fonction Za(a, b, d) a été exécutée.");
         this.x = a || 0;
         this.y = b || 0;
         this.z = d || 0;
       }
       function od(a, b) {
+        console.log("La fonction od(a, b) a été exécutée.");
         var d = a.x,
           f = a.y,
           l = a.z;
@@ -2489,23 +2602,28 @@ var ARLookWidget = (function () {
         a.z = d * b.y - f * b.x;
       }
       function fc(a, b, d, f) {
+        console.log("La fonction od(a, b, d, f) a été exécutée.");
         this.F = a || 0;
         this.G = b || 0;
         this.H = d || 0;
         this.Sa = f || fc.fk;
       }
       function Pc(a, b) {
+        console.log("La fonction Pc(a, b) a été exécutée.");
         this.min = void 0 !== a ? a : new Za(Infinity, Infinity, Infinity);
         this.max = void 0 !== b ? b : new Za(-Infinity, -Infinity, -Infinity);
       }
       function Fc(a) {
+        console.log("La fonction Fc(a) a été exécutée.");
         return new Za().dd(a.min, a.max).Fa(0.5);
       }
       function Od(a, b) {
+        console.log("La fonction Od(a, b) a été exécutée.");
         a.min.min(b);
         a.max.max(b);
       }
       function gc() {
+        console.log("La fonction gc() a été exécutée.");
         this.elements = new Float32Array([
           1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
         ]);
@@ -2515,6 +2633,7 @@ var ARLookWidget = (function () {
           );
       }
       function pd(a, b, d) {
+        console.log("La fonction pd(a, b, d) a été exécutée.");
         var f = b.elements,
           l = d.elements;
         d = a.elements;
@@ -2569,6 +2688,7 @@ var ARLookWidget = (function () {
         return a;
       }
       function Qc(a, b, d, f, l, p) {
+        console.log("La fonction Qc(a, b, d, f, l, p) a été exécutée.");
         this.a = a;
         this.b = b;
         this.c = d;
@@ -2579,6 +2699,7 @@ var ARLookWidget = (function () {
         this.$b = void 0 !== p ? p : 0;
       }
       function Pd(a, b, d) {
+        console.log("La fonction Pd(a, b, d) a été exécutée.");
         var f = new XMLHttpRequest();
         f.open("GET", a, !0);
         var l = (f.withCredentials = !1);
@@ -2600,14 +2721,17 @@ var ARLookWidget = (function () {
         f.send();
       }
       function Rc(a, b, d) {
+        console.log("La fonction Rc(a, b, d) a été exécutée.");
         "object" === typeof a ? b(a) : Pd(a, b, d);
       }
       function Qd(a) {
+        console.log("La fonction Qd(a) a été exécutée.");
         return new Promise(function (b, d) {
           Rc(a, b, d);
         });
       }
       function Rd(a, b) {
+        console.log("La fonction Rd(a, b) a été exécutée.");
         for (var d = new Za(), f = new Za(), l = 0, p = b.length; l < p; l++) {
           var w = b[l],
             h = a[w.a],
@@ -2623,6 +2747,7 @@ var ARLookWidget = (function () {
         }
       }
       function Sd(a, b) {
+        console.log("La fonction Sd(a, b) a été exécutée.");
         for (var d = Array(a.length), f = 0, l = a.length; f < l; ++f)
           d[f] = new Za();
         f = new Za();
@@ -2660,6 +2785,7 @@ var ARLookWidget = (function () {
         return d;
       }
       function Td(a, b, d, f) {
+        console.log("La fonction Td(a, b, d, f)  a été exécutée.");
         function l(n) {
           G.N(b[n]);
           e.N(G);
@@ -2749,6 +2875,7 @@ var ARLookWidget = (function () {
         return w;
       }
       function qd(a, b, d, f) {
+        console.log("La fonction qd(a, b, d, f)  a été exécutée.");
         return Math.sqrt((a - d) * (a - d) + (b - f) * (b - f));
       }
       var W = {
@@ -2837,12 +2964,14 @@ var ARLookWidget = (function () {
         rd = {},
         aa = (function () {
           function a(t, v, Q) {
+            console.log("La fonction a(t, v, Q) a été exécutée.");
             v = t.createShader(v);
             t.shaderSource(v, Q);
             t.compileShader(v);
             return t.getShaderParameter(v, t.COMPILE_STATUS) ? v : null;
           }
           function b(t, v, Q) {
+            console.log("La fonction b(t, v, Q) a été exécutée.");
             v = a(t, t.VERTEX_SHADER, v);
             Q = a(t, t.FRAGMENT_SHADER, Q);
             t === c && h.push(v, Q);
@@ -2853,6 +2982,7 @@ var ARLookWidget = (function () {
             return X;
           }
           function d(t) {
+            console.log("La fonction d(t) a été exécutée.");
             return ["float", "sampler2D", "int"]
               .map(function (v) {
                 return "precision " + t + " " + v + ";\n";
@@ -2860,6 +2990,7 @@ var ARLookWidget = (function () {
               .join("");
           }
           function f(t, v) {
+            console.log("La fonction f(t, v) a été exécutée.");
             v.R = v.R ? !0 : !1;
             if (!v.R) {
               v.v =
@@ -2901,6 +3032,7 @@ var ARLookWidget = (function () {
             }
           }
           function l(t) {
+            console.log("La fonction l(t) a été exécutée.");
             Cb.Cj(M);
             m !== t.id &&
               (M.M(),
@@ -2912,6 +3044,7 @@ var ARLookWidget = (function () {
               }));
           }
           function p(t, v, Q) {
+            console.log("La fonction p(t, v, Q) a été exécutée.");
             f(t, v, Q);
             t.useProgram(v.qa);
             t.enableVertexAttribArray(v.attributes.a0);
@@ -2919,6 +3052,7 @@ var ARLookWidget = (function () {
             return (q = v);
           }
           function w() {
+            console.log("La fonction w() a été exécutée.");
             return {
               g: "uniform sampler2D u1;varying vec2 vv0;void main(){gl_FragColor=texture2D(u1,vv0);}",
               i: ["u1"],
@@ -3395,16 +3529,19 @@ var ARLookWidget = (function () {
             return !1;
           }
           function b() {
+            console.log("La fonction b() a été exécutée.");
             return (
               navigator.userAgent &&
               -1 !== navigator.userAgent.indexOf("forceWebGL1")
             );
           }
           function d(y, A, k) {
+            console.log("La fonction d(y, A, k) a été exécutée.");
             y.setAttribute("width", A);
             y.setAttribute("height", k);
           }
           function f(y) {
+            console.log("La fonction f(y) a été exécutée.");
             if (b()) return !1;
             var A = document.createElement("canvas");
             d(A, 5, 5);
@@ -3425,6 +3562,7 @@ var ARLookWidget = (function () {
             return k ? !0 : !1;
           }
           function l(y) {
+            console.log("La fonction l(y) a été exécutée.");
             y.clearColor(0, 0, 0, 0);
             y.disable(y.DEPTH_TEST);
             y.disable(y.BLEND);
@@ -3664,6 +3802,7 @@ var ARLookWidget = (function () {
             c.bindTexture(c.TEXTURE_2D, E);
           }
           function b(E) {
+            console.log("La fonction b(E) a été exécutée.");
             var M = new Uint16Array(E.length);
             E.forEach(function (t, v) {
               n[0] = t;
@@ -3685,17 +3824,19 @@ var ARLookWidget = (function () {
             return M;
           }
           function d() {
+            console.log("La fonction d() a été exécutée.");
             if (null !== P.Af) return P.Af;
             var E = f(b([0.5, 0.5, 0.5, 0.5]), !0);
             return null === E ? !0 : (P.Af = E);
           }
           function f(E, M) {
+            console.log("La fonction f(E, M) a été exécutée.");
             if (!Cb.zb() || !y) return null;
             var t = null,
               v = Math.sqrt(E.length / 4);
             try {
               var Q = c.getError();
-              if ("FUCKING_BIG_ERROR" === Q) return !1;
+              if ("BIG_ERROR" === Q) return !1;
               t = B.instance({ isFloat: !1, U: M, array: E, width: v });
               Q = c.getError();
               if (Q !== c.NO_ERROR) return !1;
@@ -3911,8 +4052,9 @@ var ARLookWidget = (function () {
                       : O.la.height;
                 }
                 function t(ea) {
+                  console.log("La fonction t(ea) a été exécutée.");
                   var Aa = c.getError();
-                  if ("FUCKING_BIG_ERROR" === Aa) return !1;
+                  if ("BIG_ERROR" === Aa) return !1;
                   c.texImage2D(c.TEXTURE_2D, 0, Va, Ma, ra, ea);
                   Aa = c.getError();
                   Aa !== c.NO_ERROR &&
@@ -3922,6 +4064,7 @@ var ARLookWidget = (function () {
                   return !0;
                 }
                 function v() {
+                  console.log("La fonction v() a été exécutée.");
                   if (!T) {
                     a(fa);
                     xa && c.pixelStorei(c.UNPACK_FLIP_Y_WEBGL, xa);
@@ -3999,7 +4142,7 @@ var ARLookWidget = (function () {
                     else if (ya) {
                       ea = ya;
                       try {
-                        "FUCKING_BIG_ERROR" !== c.getError() &&
+                        "BIG_ERROR" !== c.getError() &&
                           (c.texImage2D(
                             c.TEXTURE_2D,
                             0,
@@ -4051,7 +4194,7 @@ var ARLookWidget = (function () {
                       O.isKeepArray || (ya = null);
                     } else
                       (ea = c.getError()),
-                        "FUCKING_BIG_ERROR" !== ea &&
+                        "BIG_ERROR" !== ea &&
                           (c.texImage2D(
                             c.TEXTURE_2D,
                             0,
@@ -4126,6 +4269,7 @@ var ARLookWidget = (function () {
                   }
                 }
                 function Q() {
+                  console.log("La fonction Q() a été exécutée.");
                   for (
                     var ea = qa * oa, Aa = 2 * ea, hb = 3 * ea, Na = 0;
                     Na < ea;
@@ -4137,6 +4281,7 @@ var ARLookWidget = (function () {
                       (Ha[3][Na] = Ta[Na + hb]);
                 }
                 function X() {
+                  console.log("La fonction X() a été exécutée.");
                   var ea = qa * oa * 4;
                   bb = [
                     new Uint8Array(ea),
@@ -5034,11 +5179,13 @@ var ARLookWidget = (function () {
           return w;
         })(),
         Ia = (function () {
-          function a() {
+          function a() { console.log("La fonction a() a été exécutée.");
+
             h = "undefined" === typeof mb ? ha : mb;
             m = !0;
           }
           function b(e, n, z) {
+            console.log("La fonction b(e,n,z) a été exécutée.");
             for (var P = 0; P < n.length; ++P) {
               var B = z.getExtension(n[P] + "_" + e);
               if (B) return B;
@@ -5046,10 +5193,12 @@ var ARLookWidget = (function () {
             return null;
           }
           function d() {
+            console.log("La fonction d() a été exécutée.");
             null !== g.re && (clearTimeout(g.re), (g.re = null));
             g.Ub = !1;
           }
           function f(e) {
+            console.log("La fonction f(e) a été exécutée.");
             if (0 === g.wb.length) {
               g.Da = c.PIXEL_PACK_BUFFER;
               g.wb.splice(0);
@@ -5066,15 +5215,18 @@ var ARLookWidget = (function () {
             g.jq = !0;
           }
           function l() {
+            console.log("La fonction l() a été exécutée.");
             c.bindBuffer(g.Da, null);
           }
           function p() {
+            console.log("La fonction p() a été exécutée.");
             g.Sb.forEach(function (e) {
               c.deleteSync(e);
             });
             g.Sb.splice(0);
           }
           function w() {
+            console.log("La fonction w() a été exécutée.");
             g.Ua = (g.Ua + 1) % g.Bc;
             ++g.cg;
           }
@@ -5219,6 +5371,7 @@ var ARLookWidget = (function () {
               },
               pe: function (e, n, z) {
                 function P() {
+                  console.log("La fonction P() a été exécutée.");
                   e.bindTexture(e.TEXTURE_2D, null);
                   e.bindFramebuffer(B, null);
                   e.deleteTexture(t);
@@ -5402,7 +5555,7 @@ var ARLookWidget = (function () {
             if (null !== z)
               try {
                 B = g.getError();
-                if ("FUCKING_BIG_ERROR" === B) return !1;
+                if ("BIG_ERROR" === B) return !1;
                 g.texImage2D(g.TEXTURE_2D, 0, e, 4, 4, 0, g.RGBA, n, z);
                 B = g.getError();
                 if (B !== g.NO_ERROR) return !1;
@@ -5413,7 +5566,7 @@ var ARLookWidget = (function () {
             g.clear(g.COLOR_BUFFER_BIT);
             Y.Qb(g);
             B = g.getError();
-            if ("FUCKING_BIG_ERROR" === B) return !1;
+            if ("BIG_ERROR" === B) return !1;
             g.readPixels(0, 0, 2, 2, g.RGBA, g.UNSIGNED_BYTE, x);
             B = g.getError();
             B === g.INVALID_OPERATION &&
@@ -5428,11 +5581,13 @@ var ARLookWidget = (function () {
             return z;
           }
           function b(e, n) {
+            console.log("La fonction b(e,n) a été exécutée.");
             return F.Wa && a(e, g.FLOAT, new Float32Array(I), n)
               ? ((h = w.hh), !0)
               : !1;
           }
           function d(e, n, z) {
+            console.log("La fonction d(e,n,z) a été exécutée.");
             if (!F.Ya) return !1;
             var P = ba.fl(I),
               B = Ia.wd(g);
@@ -5462,12 +5617,14 @@ var ARLookWidget = (function () {
             return a(e, null, null, n) ? ((h = w.tc), !0) : !1;
           }
           function f(e, n, z) {
+            console.log("La fonction f(e,n,z) a été exécutée.");
             q = !0;
             if (d(e, !0, z) || b(n, !0)) return !0;
             q = !1;
             return d(e, !1, z) || b(n, !1) ? !0 : !1;
           }
           function l(e) {
+            console.log("La fonction l(e) a été exécutée.");
             if (h === w.M) {
               g = e || c;
               h = w.RGBA8;
@@ -5503,6 +5660,7 @@ var ARLookWidget = (function () {
             }
           }
           function p() {
+            console.log("La fonction p() a été exécutée.");
             g.deleteProgram(L.qa);
             g.deleteTexture(D);
             D = L = null;
@@ -5567,6 +5725,7 @@ var ARLookWidget = (function () {
         Cd = {
           instance: function (a) {
             function b() {
+              console.log("La fonction b() a été exécutée.");
               x && x.remove();
               x = ba.instance({
                 isFloat: !1,
@@ -5741,6 +5900,7 @@ var ARLookWidget = (function () {
         Dd = {
           instance: function (a) {
             function b() {
+              console.log("La fonction b() a été exécutée.");
               if (G.lc) {
                 l.input && (l.input.remove(), l.Hd.remove());
                 var n = a.size * a.sparsity;
@@ -5762,6 +5922,7 @@ var ARLookWidget = (function () {
               }
             }
             function d() {
+              console.log("La fonction d() a été exécutée.");
               l.output && l.output.remove();
               l.output = ba.instance({
                 isFloat: !0,
@@ -5772,6 +5933,7 @@ var ARLookWidget = (function () {
               });
             }
             function f(n) {
+              console.log("La fonction f(n) a été exécutée.");
               h.buffer.forEach(function (z, P) {
                 h.results[P][0] = n[0][z];
                 h.results[P][1] = n[1][z];
@@ -6830,13 +6992,16 @@ var ARLookWidget = (function () {
         })(),
         Db = (function () {
           function a() {
+            console.log("La fonction a() a été exécutée.");
             d(k + y.Wf);
             g.port.postMessage("DONE");
           }
           function b() {
+            console.log("La fonction b() a été exécutée.");
             G.fd = 0 === y.Ca ? L(d) : L(f);
           }
           function d(B) {
+            console.log("La fonction d(B) a été exécutée.");
             D.Xb &&
               null !== A &&
               ((B -= k),
@@ -6851,18 +7016,22 @@ var ARLookWidget = (function () {
               A(k));
           }
           function f(B) {
+            console.log("La fonction f(B) a été exécutée.");
             D.Xb && (G.timeout = setTimeout(d.bind(null, B), y.Ca));
           }
           function l() {
+            console.log("La fonction l() a été exécutée.");
             A = null;
             D.Xb = !1;
             p();
           }
           function p() {
+            console.log("La fonction p() a été exécutée.");
             G.fd && (window.cancelAnimationFrame(G.fd), (G.fd = null));
             G.timeout && (window.clearTimeout(G.timeout), (G.timeout = null));
           }
           function w(B) {
+            console.log("La fonction w(B) a été exécutée.");
             B && !D.Pa
               ? ((D.Pa = !0),
                 F && Ob.Ro(),
@@ -6877,6 +7046,7 @@ var ARLookWidget = (function () {
                 g.port.postMessage("START"));
           }
           function h(B) {
+            console.log("La fonction H(B) a été exécutée.");
             B.target.hidden ? z() : n();
           }
           function m(B, E, M) {
@@ -7566,7 +7736,7 @@ var ARLookWidget = (function () {
             Wd: "models3D",
             Vd: "materials",
             Po: "tweakers",
-            neuralNetworkPath: "built/jeefitNNC_66_0.json",
+            neuralNetworkPath: "jeefitNNC_66_0.json", 
             neuralNetworkVersion: "66_0",
             ea: "",
             wa: "",
@@ -13742,7 +13912,7 @@ var ARLookWidget = (function () {
       return V;
     })(),
     Kb = {
-      glassesDBURL: "https://glassesdbcached.jeeliz.com/sku/",
+      glassesDBURL: "/MyApp_AR/api/gl/",
       appstaticURL: "https://appstatic.jeeliz.com/",
       autoVTOURL: "",
       assetsPath: "jeefit/",
@@ -13840,8 +14010,7 @@ var ARLookWidget = (function () {
               throw Error(
                 "Cannot find a <div> element with id=ARLookWidget to append the VTO widget."
               );
-            Ca.cv =
-              V.canvas || document.getElementById("ARLookWidgetCanvas");
+            Ca.cv = V.canvas || document.getElementById("ARLookWidgetCanvas");
             Ca.cv ||
               ((Ca.cv = document.createElement("canvas")),
               Ca.container.appendChild(Ca.cv));
@@ -13957,7 +14126,9 @@ var ARLookWidget = (function () {
             V && V();
           },
           Ga = "undef";
-        "string" === typeof S ? ((Ga = S), Ua(S, Ga).then(ua).catch(eb)) : ((Ga = "RANDOM_SKU_" + Date.now().toString()), Xc(Ga, S, ua));
+        "string" === typeof S
+          ? ((Ga = S), Ua(S, Ga).then(ua).catch(eb))
+          : ((Ga = "RANDOM_SKU_" + Date.now().toString()), Xc(Ga, S, ua));
         Sa.sku = Ga;
         Sa.materialsReplacements = "";
       },
@@ -13999,7 +14170,7 @@ var ARLookWidget = (function () {
     };
   return wb;
 })();
-JEELIZVTOWIDGET = {
+ ARLOOKWIDGET = {
   VERSION: ARLOOK.VERSION,
   capture_image: ARLookWidget.capture_image,
   destroy: ARLookWidARLookWidget.enter_adjustMode,

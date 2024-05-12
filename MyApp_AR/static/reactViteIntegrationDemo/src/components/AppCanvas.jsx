@@ -108,7 +108,7 @@ function AppCanvas(props){
       </div>
 
       <div ref={refChangeModel} className='ARLookWidgetControls ARLookWidgetChangeModelContainer'>
-        <button className='ARLookWidgetButton' onClick={set_glassesModel.bind(this, 'glasses_blue')}>Model 1</button>
+        <button className='ARLookWidgetButton' onClick={set_glassesModel.bind(this, 'glassrayban_wayfarer_noir_vertes_blue')}>Model 1</button>
         <button className='ARLookWidgetButton' onClick={set_glassesModel.bind(this, 'rayban_round_cuivre_pinkBrownDegrade')}>Model 2</button>
         <button className='ARLookWidgetButton' onClick={set_glassesModel.bind(this, 'carrera_113S_blue')}>Model 3</button>
       </div>
